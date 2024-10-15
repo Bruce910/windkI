@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Final10._14.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Final10._14.Controllers
 {
@@ -6,12 +7,16 @@ namespace Final10._14.Controllers
     {
         public IActionResult List()
         {
+            WealthierAndKinderContext windki =new WealthierAndKinderContext();
+            var datas=from p in windki.
             return View();
         }
 
         public IActionResult Add()
         {
+            
             return View();
+            
         }
     }
 }
