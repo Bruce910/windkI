@@ -22,6 +22,13 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.6" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\Match-Controllers\" />
+    <Folder Include="Models\Match-Models\" />
+    <Folder Include="Views\Match\" />
   </ItemGroup>
 
   <ItemGroup>

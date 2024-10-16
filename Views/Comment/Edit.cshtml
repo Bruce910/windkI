@@ -1,0 +1,48 @@
+﻿@model Final10._14.Models.TComment
+
+@{
+    ViewData["Title"] = "修改留言";
+}
+
+<h1>修改留言</h1>
+
+<h4>留言</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" disabled>
+                <label asp-for="FCommentId" class="control-label">留言編號</label>
+                <input asp-for="FCommentId" class="form-control" />
+                <span asp-validation-for="FCommentId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FPostId" class="control-label">文章編號 </label>
+                <input asp-for="FPostId" class="form-control" />
+                <span asp-validation-for="FPostId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FUserId" class="control-label">會員編號</label>
+                <input asp-for="FUserId" class="form-control" />
+                <span asp-validation-for="FUserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FContent" class="control-label">留言內容</label>
+                <input asp-for="FContent" class="form-control" />
+                <span asp-validation-for="FContent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="修改" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="List">返回留言列表</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
