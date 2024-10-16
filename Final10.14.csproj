@@ -9,6 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\Match-Controllers\**" />
+    <Compile Remove="Models\Match-Models\**" />
+    <Content Remove="Controllers\Match-Controllers\**" />
+    <Content Remove="Models\Match-Models\**" />
+    <EmbeddedResource Remove="Controllers\Match-Controllers\**" />
+    <EmbeddedResource Remove="Models\Match-Models\**" />
+    <None Remove="Controllers\Match-Controllers\**" />
+    <None Remove="Models\Match-Models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="wwwroot\css\windki.cs" />
   </ItemGroup>
 
@@ -30,8 +41,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\Match-Controllers\" />
-    <Folder Include="Models\Match-Models\" />
+    <Folder Include="Models\" />
     <Folder Include="Views\Match\" />
   </ItemGroup>
 
