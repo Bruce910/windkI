@@ -1,67 +1,102 @@
-﻿@model IEnumerable<WandK.Model.CMatch>
+﻿@model IEnumerable<Final10._14.Models.TMatch>
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "List";
 }
 
-<h1>媒合表單</h1>
+<h1>媒合清單</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-info">手動新增</a>
 </p>
 <table class="table">
     <thead>
         <tr>
+           <th>
+               序
+           </th>
             <th>
-                @Html.DisplayNameFor(model => model.fHelpId)
+                @Html.DisplayNameFor(model => model.FMatchId)                
+            </th>           
+            <th>
+                @Html.DisplayNameFor(model => model.FHelpId)
+                
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.fMemberId)
+                @Html.DisplayNameFor(model => model.FMemberId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.fPoint)
+                @Html.DisplayNameFor(model => model.FMatchDateTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.fMatchStatus)
+                @Html.DisplayNameFor(model => model.FPoint)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.fGrade)
+                @Html.DisplayNameFor(model => model.FMatchStatus)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.fMessage)
+                @Html.DisplayNameFor(model => model.FGrade)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.FGradeDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FMessage)
+            </th>
+            <th>
+                
+            </th>
+           
         </tr>
     </thead>
-    @*  <tbody>
-    @foreach (var item in Model)
-    {
-    <tr>
-    <td>
-    @Html.DisplayFor(modelItem => item.fHelpId)
-    </td>
-    <td>
-    @Html.DisplayFor(modelItem => item.fMemberId)
-    </td>
-    <td>
-    @Html.DisplayFor(modelItem => item.fPoint)
-    </td>
-    <td>
-    @Html.DisplayFor(modelItem => item.fMatchStatus)
-    </td>
-    <td>
-    @Html.DisplayFor(modelItem => item.fGrade)
-    </td>
-    <td>
-    @Html.DisplayFor(modelItem => item.fMessage)
-    </td>
-    <td>
-    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-    </td>
-    </tr>
-    }
-    </tbody> *@
+    <tbody>
+        @{
+            int count = 0;
+            foreach (var item in Model) {
+                count++;
+
+        <tr>
+            <td>
+            @count
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FMatchId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FHelpId)
+                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FMemberId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FMatchDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FPoint)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FMatchStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FGrade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FGradeDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FMessage)
+            </td>
+
+            <td>
+                    @Html.ActionLink("修改", "Edit", new { id = item.FMatchId }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("刪除", "Delete", new { id = item.FMatchId }, 
+                    new { @class = "btn btn-info",onclick="return confirm('確定要刪除嗎')" })
+                   
+            </td>
+
+        </tr>
+}}
+    </tbody>
 </table>
+

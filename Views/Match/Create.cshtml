@@ -1,0 +1,73 @@
+﻿@model Final10._14.Models.TMatch
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>手動新增</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FMatchId" class="control-label"></label>
+                <input asp-for="FMatchId" class="form-control" />
+                <span asp-validation-for="FMatchId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FHelpId" class="control-label"></label>
+                <input asp-for="FHelpId" class="form-control" />
+                <span asp-validation-for="FHelpId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FMemberId" class="control-label"></label>
+                <input asp-for="FMemberId" class="form-control" />
+                <span asp-validation-for="FMemberId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FMatchDateTime" class="control-label"></label>
+                <input asp-for="FMatchDateTime" class="form-control"  />
+                <span asp-validation-for="FMatchDateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FPoint" class="control-label"></label>
+                <input asp-for="FPoint" class="form-control" placeholder="請輸入點數" />
+                <span asp-validation-for="FPoint" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FMatchStatus" class="control-label"></label>
+                <input asp-for="FMatchStatus" class="form-control" />
+                <span asp-validation-for="FMatchStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FGrade" class="control-label"></label>
+                <input asp-for="FGrade" class="form-control" />
+                <span asp-validation-for="FGrade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FGradeDateTime" class="control-label"></label>
+                <input asp-for="FGradeDateTime" class="form-control" />
+                <span asp-validation-for="FGradeDateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FMessage" class="control-label"></label>
+                <input asp-for="FMessage" class="form-control" />
+                <span asp-validation-for="FMessage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
