@@ -22,8 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\Match-Controllers\" />
-    <Folder Include="Models\Match-Models\" />
+    <Folder Include="Controllers\Match_Controllers\" />
+    <Folder Include="Models\Match_Models\" />
     <Folder Include="Views\Match\" />
   </ItemGroup>
 
