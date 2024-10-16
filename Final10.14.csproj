@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Match\**" />
+    <Content Remove="Views\Match\**" />
+    <EmbeddedResource Remove="Views\Match\**" />
+    <None Remove="Views\Match\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\js\site.js" />
   </ItemGroup>
 
@@ -22,9 +29,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\Match_Controllers\" />
-    <Folder Include="Models\Match_Models\" />
-    <Folder Include="Views\Match\" />
+    <Folder Include="Controllers\Matchhelp_Controllers\" />
+    <Folder Include="Models\Matchhelp_Models\" />
   </ItemGroup>
 
 </Project>
