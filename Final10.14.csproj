@@ -22,7 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Folder Include="Controllers\Match-Controllers\" />
+    <Folder Include="Models\Match-Models\" />
+    <Folder Include="Views\Match\" />
   </ItemGroup>
 
 </Project>
