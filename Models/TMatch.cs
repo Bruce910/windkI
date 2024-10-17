@@ -2,26 +2,29 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Final10._14.Models;
 
 public partial class TMatch
 {
+    [Display(Name = "媒合單號")]
     public int FMatchId { get; set; }
-
+    [Display(Name = "求助單號")]
     public int? FHelpId { get; set; }
-
+    [Display(Name = "會員編號")]
     public string FMemberId { get; set; }
-
+    [Display(Name = "時間")]
     public DateTime? FMatchDateTime { get; set; }
-
+    [Display(Name = "點數")]
     public int? FPoint { get; set; }
-
+    [Display(Name = "狀態")]
     public int? FMatchStatus { get; set; }
-
+    [Display(Name = "評分")]
     public int? FGrade { get; set; }
-
+    [Display(Name = "評分時間")]
     public DateTime? FGradeDateTime { get; set; }
-
+    [Display(Name = "留言")]
     public string FMessage { get; set; }
 }
