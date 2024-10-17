@@ -41,6 +41,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="aaa\" />
+    <Folder Include="Controllers\Controllers_hao\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Match\" />
   </ItemGroup>
