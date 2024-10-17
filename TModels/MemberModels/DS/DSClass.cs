@@ -1,4 +1,4 @@
-﻿namespace Final10._14.Models.MemberModels.DS
+﻿namespace Final10._14.TModels.MemberModels.DS
 {
     public class Account
     {
