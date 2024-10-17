@@ -9,6 +9,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\Match-Controllers\**" />
+    <Compile Remove="Models\Match-Models\**" />
+    <Compile Remove="Views\Match\**" />
+    <Content Remove="Controllers\Match-Controllers\**" />
+    <Content Remove="Models\Match-Models\**" />
+    <Content Remove="Views\Match\**" />
+    <EmbeddedResource Remove="Controllers\Match-Controllers\**" />
+    <EmbeddedResource Remove="Models\Match-Models\**" />
+    <EmbeddedResource Remove="Views\Match\**" />
+    <None Remove="Controllers\Match-Controllers\**" />
+    <None Remove="Models\Match-Models\**" />
+    <None Remove="Views\Match\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\js\site.js" />
   </ItemGroup>
 
@@ -27,10 +42,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\Match-Controllers\" />
-    <Folder Include="Models\Match-Models\" />
     <Folder Include="Models\MemberModels\DTO\" />
-    <Folder Include="Views\Match\" />
   </ItemGroup>
 
 </Project>
