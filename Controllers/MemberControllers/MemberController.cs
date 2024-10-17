@@ -4,18 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Final10._14.Controllers.MemberControllers
 {
-    public class MemberController : Controller
+    // ReSharper disable once InconsistentNaming
+    public class MemberController(WealthierAndKinderContext context) : Controller
     {
-        private readonly WealthierAndKinderContext _context;
-
-        public MemberController(WealthierAndKinderContext context)
-        {
-            _context = context;
-        }
         // GET: MemberController
         public ActionResult Index()
         {
-            IEnumerable<TEmployeeMember> datas = _context.TEmployeeMembers;
+            IEnumerable<TEmployeeMember> datas = context.TEmployeeMembers;
 
             return View(datas);
         }
