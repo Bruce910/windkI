@@ -1,0 +1,113 @@
+﻿@model IEnumerable<Final10._14.Models.TEmployeeMember>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FMemberId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FAccount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FPassword)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FUserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FLastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FIdentification)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FBirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FSex)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FRegDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FPermissions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FIp)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FMemberId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FAccount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FPassword)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FUserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FIdentification)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FBirthDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FSex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FRegDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FPermissions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FIp)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FEmployeeSid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.FEmployeeSid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.FEmployeeSid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
