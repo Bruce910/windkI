@@ -76,8 +76,8 @@
                 @Html.DisplayFor(modelItem => item.FMessage)
             </td>
             <td>
-                        @Html.ActionLink("修改", "Edit", new { id = item.FMatchId }, new { @class = "btn btn-info" })
-                        @Html.ActionLink("刪除", "Delete", new { id = item.FMatchId },
+                 @Html.ActionLink("修改", "Edit", new { id = item.FMatchId }, new { @class = "btn btn-info" })
+                 @Html.ActionLink("刪除", "Delete", new { id = item.FMatchId },
                              new { @class = "btn btn-info", onclick = "return confirm('確定要刪除嗎')" })
             </td>
         </tr>
