@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Match\List.cshtml" />
     <None Include="wwwroot\js\site.js" />
   </ItemGroup>
 

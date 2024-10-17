@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Final10._14.Models.TMatch>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>媒合清單</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-info">手動新增</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                序
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FMatchId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FHelpId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FMemberId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FMatchDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FPoint)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FMatchStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FGrade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FGradeDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FMessage)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FMatchId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FHelpId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FMemberId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FMatchDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FPoint)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FMatchStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FGrade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FGradeDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FMessage)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
