@@ -4,83 +4,78 @@
     ViewData["Title"] = "List";
 }
 
-<h1>媒合清單</h1>
+<div class="container-fluid">
 
-<p>
-    <a asp-action="Create" class="btn btn-info">手動新增</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                序
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FHelpId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FMemberId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FMatchDateTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FPoint)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FMatchStatus)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FGrade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FGradeDateTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FMessage)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @{
-            int count = 0;
-            foreach (var item in Model) {
-                count++;
-        <tr>
-            <td>
-                @count
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FHelpId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FMemberId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FMatchDateTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FPoint)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FMatchStatus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FGrade)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FGradeDateTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FMessage)
-            </td>
-            <td>
-                 @Html.ActionLink("修改", "Edit", new { id = item.FMatchId }, new { @class = "btn btn-info" })
-                 @Html.ActionLink("刪除", "Delete", new { id = item.FMatchId },
-                             new { @class = "btn btn-info", onclick = "return confirm('確定要刪除嗎')" })
-            </td>
-        </tr>
-}}
-    </tbody>
-</table>
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">媒合清單</h1>
+    <p>
+        <a asp-action="Create" class="btn btn-info">手動新增</a>
+    </p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">已媒合資料表</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th> 序</th>
+                            <th> @Html.DisplayNameFor(model => model.FHelpId)</th>
+                            <th>@Html.DisplayNameFor(model => model.FMemberId)</th>
+                            <th>@Html.DisplayNameFor(model => model.FMatchDateTime)</th>
+                            <th> @Html.DisplayNameFor(model => model.FPoint)</th>
+                            <th>@Html.DisplayNameFor(model => model.FMatchStatus)</th>
+                            <th> @Html.DisplayNameFor(model => model.FGrade)</th>
+                            <th>@Html.DisplayNameFor(model => model.FGradeDateTime)</th>
+                            <th>@Html.DisplayNameFor(model => model.FMessage)</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th> 序</th>
+                            <th>@Html.DisplayNameFor(model => model.FHelpId)</th>
+                            <th>@Html.DisplayNameFor(model => model.FMemberId)</th>
+                            <th>@Html.DisplayNameFor(model => model.FMatchDateTime)</th>
+                            <th>@Html.DisplayNameFor(model => model.FPoint)</th>
+                            <th>@Html.DisplayNameFor(model => model.FMatchStatus)</th>
+                            <th>@Html.DisplayNameFor(model => model.FGrade)</th>
+                            <th>@Html.DisplayNameFor(model => model.FGradeDateTime)</th>
+                            <th>@Html.DisplayNameFor(model => model.FMessage)</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @{
+                            int count = 0;
+                            foreach (var item in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <td> @count</td>
+                                    <td> @Html.DisplayFor(modelItem => item.FHelpId)</td>
+                                    <td> @Html.DisplayFor(modelItem => item.FMemberId)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.FMatchDateTime)</td>
+                                    <td> @Html.DisplayFor(modelItem => item.FPoint)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.FMatchStatus)</td>
+                                    <td> @Html.DisplayFor(modelItem => item.FGrade)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.FGradeDateTime)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.FMessage)</td>
+                                    <td>
+                                        @Html.ActionLink("修改", "Edit", new { id = item.FMatchId }, new { @class = "btn btn-info" })
+                                        @Html.ActionLink("刪除", "Delete", new { id = item.FMatchId },
+                                             new { @class = "btn btn-info", onclick = "return confirm('確定要刪除嗎')" })
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
