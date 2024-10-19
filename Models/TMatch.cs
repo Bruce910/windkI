@@ -10,6 +10,7 @@ namespace Final10._14.Models;
 public partial class TMatch
 {
     [Display(Name = "媒合單號")]
+
     public int FMatchId { get; set; }
     [Display(Name = "求助單號")]
     public int? FHelpId { get; set; }

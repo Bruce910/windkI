@@ -26,9 +26,13 @@ namespace Final10._14.Controllers.MatchControllers
         [HttpPost]
         public IActionResult Create(TProduct p)
         {
-            _context.TProducts.Add(p);
-            _context.SaveChanges();
-            return RedirectToAction("List");
+            if (ModelState.IsValid)
+            {
+                _context.TProducts.Add(p);
+                _context.SaveChanges();
+                return RedirectToAction("List");
+            }
+             return View(p);
         }
 
         public IActionResult Edit(int id)

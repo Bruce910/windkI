@@ -13,7 +13,8 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="FHelpId" class="control-label"></label>
-                <input asp-for="FHelpId" class="form-control" />
+                <input asp-for="FHelpId" class="form-control" pattern="^M\d{9}$" required"/>
+                
                 <span asp-validation-for="FHelpId" class="text-danger"></span>
             </div>
             <div class="form-group">
