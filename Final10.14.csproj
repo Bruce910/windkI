@@ -9,10 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Match\List.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <None Include="efpt.config.json.user" />
     <None Include="wwwroot\js\site.js" />
   </ItemGroup>
 
@@ -33,7 +30,7 @@
   <ItemGroup>
     <Folder Include="Controllers\Match-Controllers\" />
     <Folder Include="Models\Match-Models\" />
-    <Folder Include="Models\MemberModels\DTO\" />
+    <Folder Include="TModels\MemberModels\DTO\" />
     <Folder Include="Views\Match\" />
   </ItemGroup>
 
