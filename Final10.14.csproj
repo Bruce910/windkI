@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ViewModels\CBrokerIdViewModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="efpt.config.json.user" />
     <None Include="wwwroot\js\site.js" />
   </ItemGroup>
 
