@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Final10._14.Models.TProduct>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                產品類別
+            </th>
+            <th>
+                贊助商
+            </th>
+            <th>
+                產品名稱
+            </th>
+            <th>
+                產品描述
+            </th>
+            <th>
+                銷售量
+            </th>
+            <th>
+                庫存量
+            </th>
+            <th>
+                單位幫助點數
+            </th>
+            <th>
+                狀態
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FProductCategoryId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FSponsorId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FSales)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FUnitlHelpPoint)
+            </td>
+           @*  <td>
+                @Html.DisplayFor(modelItem => item.FStatus)
+            </td> *@
+                <td>
+                    @{
+                        var statusText = item.FStatus == 1 ? "販售中" : item.FStatus == 2 ? "未上架" : "未知狀態";
+                    }
+                    @statusText
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FProductId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.FProductId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.FProductId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
