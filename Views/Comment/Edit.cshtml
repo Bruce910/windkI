@@ -4,7 +4,7 @@
     ViewData["Title"] = "修改留言";
 }
 
-<h1>修改留言</h1>
+<h1>@ViewData["Title"]</h1>
 
 <h4>留言</h4>
 <hr />
@@ -12,28 +12,24 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group" disabled>
-                <label asp-for="FCommentId" class="control-label">留言編號</label>
-                <input asp-for="FCommentId" class="form-control" />
-                <span asp-validation-for="FCommentId" class="text-danger"></span>
-            </div>
+            <input type="hidden" asp-for="FCommentId" />
             <div class="form-group">
-                <label asp-for="FPostId" class="control-label">文章編號 </label>
-                <input asp-for="FPostId" class="form-control" />
+                <label asp-for="FPostId" class="control-label">文章編號</label>
+                <input asp-for="FPostId" class="form-control" readonly />
                 <span asp-validation-for="FPostId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="FUserId" class="control-label">會員編號</label>
-                <input asp-for="FUserId" class="form-control" />
+                <input asp-for="FUserId" class="form-control" readonly />
                 <span asp-validation-for="FUserId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="FContent" class="control-label">留言內容</label>
-                <input asp-for="FContent" class="form-control" />
+                <textarea asp-for="FContent" class="form-control" rows="5"></textarea>
                 <span asp-validation-for="FContent" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="修改" class="btn btn-primary" />
+                <input type="submit" value="儲存" class="btn btn-primary" />
             </div>
         </form>
     </div>

@@ -1,4 +1,4 @@
-﻿using Final10._14.Models.MemberModels;
+﻿using Final10._14.TModels.MemberModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 

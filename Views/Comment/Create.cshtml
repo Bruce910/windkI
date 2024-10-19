@@ -12,34 +12,27 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="FCommentId" class="control-label">留言編號  </label>
-                <input asp-for="FCommentId" class="form-control" />
-                <span asp-validation-for="FCommentId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FPostId" class="control-label">文章編號     </label>
-                <input asp-for="FPostId" class="form-control" />
-                <span asp-validation-for="FPostId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FUserId" class="control-label">會員編號</label>
-                <input asp-for="FUserId" class="form-control" />
-                <span asp-validation-for="FUserId" class="text-danger"></span>
-            </div>
+            
+            @* 移除 FCommentId 輸入，因為它應該由數據庫自動生成 *@
+
+            @* 將 FPostId 改為隱藏字段，假設它從 URL 或其他地方獲取 *@
+            <input type="hidden" asp-for="FPostId" />
+
+            @* 移除 FUserId 輸入，因為它應該在控制器中設置 *@
+
             <div class="form-group">
                 <label asp-for="FContent" class="control-label">留言內容</label>
-                <input asp-for="FContent" class="form-control" />
+                <textarea asp-for="FContent" class="form-control" rows="5"></textarea>
                 <span asp-validation-for="FContent" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mt-3">
                 <input type="submit" value="新增" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
+<div class="mt-3">
     <a asp-action="List">返回留言列表</a>
 </div>
 

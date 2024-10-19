@@ -1,42 +1,39 @@
 ﻿@model Final10._14.Models.TComment
 
 @{
-    ViewData["Title"] = "刪除留言";
+    ViewData["Title"] = "刪除評論";
 }
 
-<h1>刪除留言</h1>
-<h3>確定要刪除這則留言嗎?</h3>
+<h1>@ViewData["Title"]</h1>
+
+<h3>您確定要刪除這條評論嗎？</h3>
 <div>
-    <h4>留言</h4>
+    <h4>評論詳情</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FCommentId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FCommentId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FPostId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FPostId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FUserId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FUserId)
-        </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.FContent)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.FContent)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FCommentTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FCommentTime)
+        </dd>
+        <dt class="col-sm-2">
+            用戶名
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FUser.FUserName)
+        </dd>
     </dl>
+    
     <form asp-action="Delete">
+        <input type="hidden" asp-for="FCommentId" />
         <input type="submit" value="刪除" class="btn btn-danger" /> |
-        <a asp-action="List">返回留言列表</a>  
+        <a asp-action="List">返回列表</a>
     </form>
 </div>

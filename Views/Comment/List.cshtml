@@ -1,51 +1,46 @@
 ﻿@model IEnumerable<Final10._14.Models.TComment>
 
+
 @{
-    ViewData["Title"] = "List";
+    ViewData["Title"] = "評論列表";
 }
 
-<h1>List</h1>
+<h1>評論列表</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">新增評論</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FCommentId)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.FPostId)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.FUserId)*@
+                作者
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FContent)
             </th>
-            <th></th>
+            <th>操作</th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.FCommentId)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.FPostId)
             </td>
             <td>
-                @*@Html.DisplayFor(modelItem => item.FUserId)*@
+                @Html.DisplayFor(modelItem => item.FUser.FUserName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FContent)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("編輯", "Edit", new { id=item.FCommentId }) |
+                @Html.ActionLink("詳情", "Details", new { id=item.FCommentId }) |
+                @Html.ActionLink("刪除", "Delete", new { id=item.FCommentId })
             </td>
         </tr>
 }

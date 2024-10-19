@@ -1,16 +1,30 @@
 ﻿using Final10._14.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Final10._14.Controllers.SocialMedia
 {
     public class CommentController : Controller
     {
-        public IActionResult List()
-        {
-            WealthierAndKinderContext db = new WealthierAndKinderContext();
+        private readonly WealthierAndKinderContext _db;
 
-            var comments = from c in db.TComments
-                           select c;
+        public CommentController(WealthierAndKinderContext db)
+        {
+            _db = db;
+        }
+
+        public async Task<IActionResult> List()
+        {
+            var comments = await (from comment in _db.TComments
+                                  join person in _db.TPersonMembers
+                                  on comment.FUserId equals person.FPersonSid
+                                  select new
+                                  {
+                                      Comment = comment,
+                                      UserName = person.FUserName
+                                  }).ToListAsync();
 
             return View(comments);
         }
@@ -21,46 +35,94 @@ namespace Final10._14.Controllers.SocialMedia
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(TComment comment)
         {
-          return View();
-        }
-
-        public IActionResult Delete(int id)
-        {
-            WealthierAndKinderContext db = new WealthierAndKinderContext();
-            var comment = db.TComments.Find(id);
+            if (ModelState.IsValid)
+            {
+                _db.TComments.Add(comment);
+                _db.SaveChanges();
+                return RedirectToAction(nameof(List));
+            }
             return View(comment);
         }
-        
-        [HttpPost, ActionName("Delete")]
-        public IActionResult DeleteConfirmed(int id)
+
+        public async Task<IActionResult> Delete(int id)
         {
-            WealthierAndKinderContext db = new WealthierAndKinderContext();
-            var comment = db.TComments.Find(id);
-            if (comment != null)
+            var comment = await _db.TComments
+                .Include(c => c.FUser)  // 假設有一個 FUser 導航屬性
+                .FirstOrDefaultAsync(c => c.FCommentId == id);
+
+            if (comment == null)
             {
-                db.TComments.Remove(comment);
-                db.SaveChanges();
+                return NotFound();
             }
-            return RedirectToAction("List");
+
+            return View(comment);
         }
 
-        public IActionResult Edit(int id)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            WealthierAndKinderContext db = new WealthierAndKinderContext();
-            var comment = db.TComments.Find(id);
+            var comment = await _db.TComments.FindAsync(id);
+            if (comment != null)
+            {
+                _db.TComments.Remove(comment);
+                await _db.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(List));
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var comment = await _db.TComments
+                .Include(c => c.FUser)
+                .FirstOrDefaultAsync(c => c.FCommentId == id);
+
+            if (comment == null)
+            {
+                return NotFound();
+            }
+
             return View(comment);
         }
 
         [HttpPost]
-        public IActionResult Edit(TComment comment)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("FCommentId,FPostId,FUserId,FContent")] TComment comment)
         {
-            
-            return View();
-        }       
+            if (id != comment.FCommentId)
+            {
+                return NotFound();
+            }
 
-        
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _db.Update(comment);
+                    await _db.SaveChangesAsync();
+                    return RedirectToAction(nameof(List));
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!CommentExists(comment.FCommentId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+            return View(comment);
+        }
 
+        private bool CommentExists(int id)
+        {
+            return _db.TComments.Any(e => e.FCommentId == id);
+        }
     }
 }

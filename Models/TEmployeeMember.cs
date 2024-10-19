@@ -38,4 +38,6 @@ public partial class TEmployeeMember
     public string FIp { get; set; }
 
     public byte[] FMemberImage { get; set; }
+
+    public string FMemberImagePath { get; set; }
 }
