@@ -1,5 +1,7 @@
 ﻿@model Final10._14.Models.TMatch
 
+
+
 @{
     ViewData["Title"] = "Create";
 }
@@ -13,8 +15,13 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="FHelpId" class="control-label"></label>
-                <input asp-for="FHelpId" class="form-control" pattern="^M\d{9}$" required"/>
-                
+                @* <input asp-for="FHelpId" class="form-control" pattern="^M\d{9}$" required"/> *@
+                <select asp-for="FHelpId" class="form-control">
+                    @foreach(var item in ViewBag.kk)
+                    {
+                        <option value="@item">@item</option>
+                    }
+                </select>
                 <span asp-validation-for="FHelpId" class="text-danger"></span>
             </div>
             <div class="form-group">

@@ -1,4 +1,5 @@
 ﻿using Final10._14.Models;
+using Final10._14.ViewModel.MatchViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
 
@@ -15,12 +16,19 @@ namespace Final10._14.Controllers.MatchControllers
         public IActionResult List()
         {
             var q = _context.TMatches;
+            
             return View(q);
         }
 
         public IActionResult Create()
         {
+            var aaa = from p in _context.TMatches
+                         join a in _context.THelps on p.FHelpId equals a.FHelpId
+                         where p.FHelpId == a.FHelpId && a.FHelpStatus == 1
+                         select new { a.FHelpId };
             
+
+            ViewBag.kk = aaa.ToList();
             return View();
         }
         [HttpPost]
@@ -33,6 +41,7 @@ namespace Final10._14.Controllers.MatchControllers
                 return RedirectToAction("List");
             }
              return View(p);
+
         }
 
         public IActionResult Edit(int id)
