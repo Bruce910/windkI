@@ -5,11 +5,11 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class TSponsorCategory
+public partial class tSponsorCategory
 {
-    public int FSponsorCategoryId { get; set; }
+    public int fSponsorCategoryId { get; set; }
 
-    public string FSponsorCategoryrName { get; set; }
+    public string fSponsorCategoryrName { get; set; }
 
-    public string FDescriptionFDescription { get; set; }
+    public string fDescription__fDescription { get; set; }
 }

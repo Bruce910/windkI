@@ -5,27 +5,27 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class TInvestRecord
+public partial class tInvestRecord
 {
-    public int FRepoId { get; set; }
+    public int fRepoId { get; set; }
 
-    public string FMemberId { get; set; }
+    public string fMemberId { get; set; }
 
-    public DateTime FStartDate { get; set; }
+    public DateTime fStartDate { get; set; }
 
-    public DateTime FEndDate { get; set; }
+    public DateTime fEndDate { get; set; }
 
-    public int FStockId { get; set; }
+    public int fStockId { get; set; }
 
-    public DateTime? FSoldTime { get; set; }
+    public DateTime? fSoldTime { get; set; }
 
-    public decimal FCost { get; set; }
+    public decimal fCost { get; set; }
 
-    public decimal FDealPrice { get; set; }
+    public decimal fDealPrice { get; set; }
 
-    public int FStockQty { get; set; }
+    public int fStockQty { get; set; }
 
-    public double FProSum { get; set; }
+    public double fProSum { get; set; }
 
-    public double FProTsum { get; set; }
+    public double fProTSum { get; set; }
 }

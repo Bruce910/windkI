@@ -5,15 +5,15 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class TCustomerInvestAccount
+public partial class tCustomerInvestAccount
 {
-    public int FInvestAccountId { get; set; }
+    public int fInvestAccountId { get; set; }
 
-    public string FMemberId { get; set; }
+    public string fMemberId { get; set; }
 
-    public string FBrokerId { get; set; }
+    public string fBrokerId { get; set; }
 
-    public string FInvestAccount { get; set; }
+    public string fInvestAccount { get; set; }
 
-    public string FInvestPass { get; set; }
+    public string fInvestPass { get; set; }
 }

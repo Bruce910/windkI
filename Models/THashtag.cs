@@ -5,15 +5,15 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class THashtag
+public partial class tHashtag
 {
-    public int FHashTagSid { get; set; }
+    public int fHashTagSId { get; set; }
 
-    public string FHashTag { get; set; }
+    public string fHashTag { get; set; }
 
-    public int? FPostId { get; set; }
+    public int? fPostId { get; set; }
 
-    public string FMemberId { get; set; }
+    public string fMemberId { get; set; }
 
-    public string FMemberType { get; set; }
+    public string fMemberType { get; set; }
 }

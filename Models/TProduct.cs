@@ -5,23 +5,23 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class TProduct
+public partial class tProduct
 {
-    public int FProductId { get; set; }
+    public int fProductId { get; set; }
 
-    public int FProductCategoryId { get; set; }
+    public int fProductCategoryId { get; set; }
 
-    public int? FSponsorId { get; set; }
+    public int? fSponsorId { get; set; }
 
-    public string FProductName { get; set; }
+    public string fProductName { get; set; }
 
-    public string FDescription { get; set; }
+    public string fDescription { get; set; }
 
-    public int? FSales { get; set; }
+    public int? fSales { get; set; }
 
-    public int? FStock { get; set; }
+    public int? fStock { get; set; }
 
-    public int? FUnitlHelpPoint { get; set; }
+    public int? fUnitlHelpPoint { get; set; }
 
-    public int? FStatus { get; set; }
+    public int? fStatus { get; set; }
 }

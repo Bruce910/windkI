@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class THelpClass
+public partial class tHelpClass
 {
-    public int FHelpClassId { get; set; }
+    public int fHelpClassId { get; set; }
 
-    public string FHelpClass { get; set; }
+    public string fHelpClass { get; set; }
 }

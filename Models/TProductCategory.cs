@@ -5,11 +5,11 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class TProductCategory
+public partial class tProductCategory
 {
-    public int FProductCategoryId { get; set; }
+    public int fProductCategoryId { get; set; }
 
-    public string FProductCategoryName { get; set; }
+    public string fProductCategoryName { get; set; }
 
-    public string FDescription { get; set; }
+    public string fDescription { get; set; }
 }

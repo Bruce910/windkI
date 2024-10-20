@@ -5,13 +5,13 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class TLike
+public partial class tLike
 {
-    public int FLikesSid { get; set; }
+    public int fLikesSId { get; set; }
 
-    public string FUserId { get; set; }
+    public string fUserId { get; set; }
 
-    public string FPostId { get; set; }
+    public string fPostId { get; set; }
 
-    public string FTimestamp { get; set; }
+    public string fTimestamp { get; set; }
 }
