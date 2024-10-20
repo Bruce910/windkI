@@ -1,48 +1,90 @@
-﻿@model IEnumerable<Final10._14.Models.TComment>
-
+﻿@model PaginatedList<Final10._14.Models.TComment>
 
 @{
     ViewData["Title"] = "評論列表";
 }
 
-<h1>評論列表</h1>
+<h2>評論列表</h2>
 
-<p>
-    <a asp-action="Create">新增評論</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FPostId)
-            </th>
-            <th>
-                作者
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FContent)
-            </th>
-            <th>操作</th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FPostId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FUser.FUserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FContent)
-            </td>
-            <td>
-                @Html.ActionLink("編輯", "Edit", new { id=item.FCommentId }) |
-                @Html.ActionLink("詳情", "Details", new { id=item.FCommentId }) |
-                @Html.ActionLink("刪除", "Delete", new { id=item.FCommentId })
-            </td>
-        </tr>
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
 }
-    </tbody>
-</table>
+
+<div class="row mb-4">
+    <div class="col-md-6">
+        <a asp-action="Create" asp-controller="Comment" class="btn btn-primary">新增留言</a>
+    </div>
+    <div class="col-md-6">
+        <form asp-action="List" method="get" class="form-inline justify-content-md-end">
+            <div class="input-group">
+                <input type="text" name="SearchString" class="form-control" placeholder="搜索評論或會員ID" aria-label="搜索評論或會員ID">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">
+                        <i class="fas fa-search"></i> 搜索
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>會員ID</th>
+                <th>內容</th>
+                <th>創建時間</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var comment in Model)
+            {
+                <tr>
+                    <td>@comment.FMemberId</td>
+                    <td>@(comment.FContent ?? "無內容")</td>
+                    <td>@(comment.FCratedAt?.ToString("yyyy-MM-dd") ?? "未知日期")</td>
+                    <td>
+                        <a asp-action="Edit" asp-controller="Comment" asp-route-id="@comment.FCommentId" class="btn btn-warning btn-sm">修改</a>
+                        <form asp-action="Delete" asp-route-id="@comment.FCommentId" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('確定要刪除這條評論嗎?');">刪除</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            <li class="page-item @prevDisabled">
+                <a asp-action="List"
+                   asp-route-pageNumber="@(Model.PageIndex - 1)"
+                   asp-route-searchString="@ViewData["CurrentFilter"]"
+                   class="page-link">
+                    上一頁
+                </a>
+            </li>
+            <li class="page-item @nextDisabled">
+                <a asp-action="List"
+                   asp-route-pageNumber="@(Model.PageIndex + 1)"
+                   asp-route-searchString="@ViewData["CurrentFilter"]"
+                   class="page-link">
+                    下一頁
+                </a>
+            </li>
+        </ul>
+    </nav>
+}
+else
+{
+    <p>目前還沒有評論。成為第一個留言的人吧！</p>
+}

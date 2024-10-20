@@ -1,96 +1,94 @@
-﻿using Final10._14.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
+using System.Text.Json;
 using System.Threading.Tasks;
+using Final10._14.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
-namespace Final10._14.Controllers.SocialMedia
+namespace Final10._14.Controllers
 {
     public class CommentController : Controller
     {
-        private readonly WealthierAndKinderContext _db;
+        private readonly WealthierAndKinderContext _context;
+        private readonly int _pageSize = 10; // 每頁顯示的評論數量
+        private const string SessionKeyDraft = "_CommentDraft";
 
-        public CommentController(WealthierAndKinderContext db)
+        public CommentController(WealthierAndKinderContext context)
         {
-            _db = db;
+            _context = context;
         }
 
-        public async Task<IActionResult> List()
+        public async Task<IActionResult> List(string searchString, int? pageNumber)
         {
-            var comments = await (from comment in _db.TComments
-                                  join person in _db.TPersonMembers
-                                  on comment.FUserId equals person.FPersonSid
-                                  select new
-                                  {
-                                      Comment = comment,
-                                      UserName = person.FUserName
-                                  }).ToListAsync();
+            var comments = from c in _context.TComments
+                           select c;
 
-            return View(comments);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                comments = comments.Where(s => s.FContent.Contains(searchString)
+                                       || s.FMemberId.Contains(searchString));
+            }
+
+            int pageSize = _pageSize;
+            return View(await PaginatedList<TComment>.CreateAsync(comments.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
         public IActionResult Create()
         {
+            var draft = HttpContext.Session.GetString(SessionKeyDraft);
+            if (!string.IsNullOrEmpty(draft))
+            {
+                var comment = JsonSerializer.Deserialize<TComment>(draft);
+                return View(comment);
+            }
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(TComment comment)
+        public async Task<IActionResult> Create([Bind("FMemberId,FContent")] TComment comment)
         {
             if (ModelState.IsValid)
             {
-                _db.TComments.Add(comment);
-                _db.SaveChanges();
+                comment.FCratedAt = DateOnly.FromDateTime(DateTime.Now);
+                _context.Add(comment);
+                await _context.SaveChangesAsync();
+                HttpContext.Session.Remove(SessionKeyDraft);
                 return RedirectToAction(nameof(List));
             }
             return View(comment);
         }
 
-        public async Task<IActionResult> Delete(int id)
+        [HttpPost]
+        public IActionResult SaveDraft([FromBody] TComment comment)
         {
-            var comment = await _db.TComments
-                .Include(c => c.FUser)  // 假設有一個 FUser 導航屬性
-                .FirstOrDefaultAsync(c => c.FCommentId == id);
+            var draftJson = JsonSerializer.Serialize(comment);
+            HttpContext.Session.SetString(SessionKeyDraft, draftJson);
+            return Ok();
+        }
 
-            if (comment == null)
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
             {
                 return NotFound();
             }
 
-            return View(comment);
-        }
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var comment = await _db.TComments.FindAsync(id);
-            if (comment != null)
-            {
-                _db.TComments.Remove(comment);
-                await _db.SaveChangesAsync();
-            }
-            return RedirectToAction(nameof(List));
-        }
-
-        public async Task<IActionResult> Edit(int id)
-        {
-            var comment = await _db.TComments
-                .Include(c => c.FUser)
-                .FirstOrDefaultAsync(c => c.FCommentId == id);
-
+            var comment = await _context.TComments.FindAsync(id);
             if (comment == null)
             {
                 return NotFound();
             }
-
             return View(comment);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FCommentId,FPostId,FUserId,FContent")] TComment comment)
+        public async Task<IActionResult> Edit(int id, [Bind("FCommentId,FMemberId,FContent")] TComment comment)
         {
             if (id != comment.FCommentId)
             {
@@ -101,13 +99,20 @@ namespace Final10._14.Controllers.SocialMedia
             {
                 try
                 {
-                    _db.Update(comment);
-                    await _db.SaveChangesAsync();
-                    return RedirectToAction(nameof(List));
+                    var existingComment = await _context.TComments.FindAsync(id);
+                    if (existingComment == null)
+                    {
+                        return NotFound();
+                    }
+
+                    existingComment.FContent = comment.FContent;
+                    existingComment.FUpdateAt = DateOnly.FromDateTime(DateTime.Now);
+
+                    await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CommentExists(comment.FCommentId))
+                    if (!TCommentExists(comment.FCommentId))
                     {
                         return NotFound();
                     }
@@ -116,13 +121,33 @@ namespace Final10._14.Controllers.SocialMedia
                         throw;
                     }
                 }
+                return RedirectToAction(nameof(List));
             }
             return View(comment);
         }
 
-        private bool CommentExists(int id)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
         {
-            return _db.TComments.Any(e => e.FCommentId == id);
+            var comment = await _context.TComments.FindAsync(id);
+            if (comment == null)
+            {
+                return NotFound();
+            }
+
+            _context.TComments.Remove(comment);
+            await _context.SaveChangesAsync();
+            
+            // 可以添加一個成功消息
+            TempData["Message"] = "評論已成功刪除。";
+            
+            return RedirectToAction(nameof(List));
+        }
+
+        private bool TCommentExists(int id)
+        {
+            return _context.TComments.Any(e => e.FCommentId == id);
         }
     }
 }
