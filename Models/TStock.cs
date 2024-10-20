@@ -5,11 +5,11 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class tStock
+public partial class TStock
 {
-    public int fStockId { get; set; }
+    public int FStockId { get; set; }
 
-    public string fStockName { get; set; }
+    public string FStockName { get; set; }
 
-    public decimal? fStockPriceN { get; set; }
+    public decimal? FStockPriceN { get; set; }
 }

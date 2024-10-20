@@ -5,15 +5,15 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class tMessage
+public partial class TMessage
 {
-    public int fMessid { get; set; }
+    public int FMessid { get; set; }
 
-    public string fSId { get; set; }
+    public string FSid { get; set; }
 
-    public string fRId { get; set; }
+    public string FRid { get; set; }
 
-    public string fMessContent { get; set; }
+    public string FMessContent { get; set; }
 
-    public byte[] fTimestamp { get; set; }
+    public byte[] FTimestamp { get; set; }
 }

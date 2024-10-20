@@ -5,15 +5,15 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class tOrderDetail
+public partial class TOrderDetail
 {
-    public int fOrderDetailId { get; set; }
+    public int FOrderDetailId { get; set; }
 
-    public int fOrderId { get; set; }
+    public int FOrderId { get; set; }
 
-    public int? fProductId { get; set; }
+    public int? FProductId { get; set; }
 
-    public int? fAmount { get; set; }
+    public int? FAmount { get; set; }
 
-    public int? fHelpPoint { get; set; }
+    public int? FHelpPoint { get; set; }
 }

@@ -5,11 +5,11 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class tCustomerPreference
+public partial class TCustomerPreference
 {
-    public int fPreferId { get; set; }
+    public int FPreferId { get; set; }
 
-    public string fMemberId { get; set; }
+    public string FMemberId { get; set; }
 
-    public int fStockId { get; set; }
+    public int FStockId { get; set; }
 }

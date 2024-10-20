@@ -5,13 +5,13 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class tMgerScActivity
+public partial class TMgerScActivity
 {
-    public int fActivityId { get; set; }
+    public int FActivityId { get; set; }
 
-    public string fMemberId { get; set; }
+    public string FMemberId { get; set; }
 
-    public string fActivityType { get; set; }
+    public string FActivityType { get; set; }
 
-    public byte[] fOccurreAt { get; set; }
+    public byte[] FOccurreAt { get; set; }
 }

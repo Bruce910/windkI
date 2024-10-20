@@ -5,27 +5,27 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class tCustomerStra
+public partial class TCustomerStra
 {
-    public int fStraId { get; set; }
+    public int FStraId { get; set; }
 
-    public string fMemberId { get; set; }
+    public string FMemberId { get; set; }
 
-    public int fStockId { get; set; }
+    public int FStockId { get; set; }
 
-    public decimal? fPriceSet { get; set; }
+    public decimal? FPriceSet { get; set; }
 
-    public string fTranType { get; set; }
+    public string FTranType { get; set; }
 
-    public bool? fBuySell { get; set; }
+    public bool? FBuySell { get; set; }
 
-    public decimal? f5MA { get; set; }
+    public decimal? F5Ma { get; set; }
 
-    public decimal? f10MA { get; set; }
+    public decimal? F10Ma { get; set; }
 
-    public decimal? f20MA { get; set; }
+    public decimal? F20Ma { get; set; }
 
-    public int? fKValue { get; set; }
+    public int? FKvalue { get; set; }
 
-    public int? fDValue { get; set; }
+    public int? FDvalue { get; set; }
 }

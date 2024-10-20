@@ -5,23 +5,23 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class tMatch
+public partial class TMatch
 {
-    public int fMatchId { get; set; }
+    public int FMatchId { get; set; }
 
-    public int? fHelpId { get; set; }
+    public int? FHelpId { get; set; }
 
-    public string fMemberId { get; set; }
+    public string FMemberId { get; set; }
 
-    public DateTime? fMatchDateTime { get; set; }
+    public DateTime? FMatchDateTime { get; set; }
 
-    public int? fPoint { get; set; }
+    public int? FPoint { get; set; }
 
-    public int? fMatchStatus { get; set; }
+    public int? FMatchStatus { get; set; }
 
-    public int? fGrade { get; set; }
+    public int? FGrade { get; set; }
 
-    public DateTime? fGradeDateTime { get; set; }
+    public DateTime? FGradeDateTime { get; set; }
 
-    public string fMessage { get; set; }
+    public string FMessage { get; set; }
 }

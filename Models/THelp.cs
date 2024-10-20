@@ -5,33 +5,33 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class tHelp
+public partial class THelp
 {
-    public int fHelpId { get; set; }
+    public int FHelpId { get; set; }
 
-    public string fMemberId { get; set; }
+    public string FMemberId { get; set; }
 
-    public int? fMemberType { get; set; }
+    public int? FMemberType { get; set; }
 
-    public string fName { get; set; }
+    public string FName { get; set; }
 
-    public string fPhone { get; set; }
+    public string FPhone { get; set; }
 
-    public string fNId { get; set; }
+    public string FNid { get; set; }
 
-    public int? fTaxID { get; set; }
+    public int? FTaxId { get; set; }
 
-    public int? fDistrictId { get; set; }
+    public int? FDistrictId { get; set; }
 
-    public string fHelpDescribe { get; set; }
+    public string FHelpDescribe { get; set; }
 
-    public int? fHelpClassId { get; set; }
+    public int? FHelpClassId { get; set; }
 
-    public int? fHelpSkillId { get; set; }
+    public int? FHelpSkillId { get; set; }
 
-    public int? fHelpStatus { get; set; }
+    public int? FHelpStatus { get; set; }
 
-    public DateTime? fMfdDate { get; set; }
+    public DateTime? FMfdDate { get; set; }
 
-    public DateTime? fExpDate { get; set; }
+    public DateTime? FExpDate { get; set; }
 }

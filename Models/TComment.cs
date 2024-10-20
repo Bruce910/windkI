@@ -5,17 +5,17 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class tComment
+public partial class TComment
 {
-    public int fCommentId { get; set; }
+    public int FCommentId { get; set; }
 
-    public int? fPostId { get; set; }
+    public int? FPostId { get; set; }
 
-    public string fMemberId { get; set; }
+    public string FMemberId { get; set; }
 
-    public string fContent { get; set; }
+    public string FContent { get; set; }
 
-    public DateOnly? fCratedAT { get; set; }
+    public DateOnly? FCratedAt { get; set; }
 
-    public DateOnly? fUpdateAt { get; set; }
+    public DateOnly? FUpdateAt { get; set; }
 }

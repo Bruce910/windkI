@@ -5,13 +5,13 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class tBlock
+public partial class TBlock
 {
-    public int fBlockSId { get; set; }
+    public int FBlockSid { get; set; }
 
-    public string fMemberId { get; set; }
+    public string FMemberId { get; set; }
 
-    public string fBlockUserId { get; set; }
+    public string FBlockUserId { get; set; }
 
-    public string fBlockType { get; set; }
+    public string FBlockType { get; set; }
 }

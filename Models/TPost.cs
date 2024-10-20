@@ -5,23 +5,23 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class tPost
+public partial class TPost
 {
-    public int fPostId { get; set; }
+    public int FPostId { get; set; }
 
-    public string fMemberId { get; set; }
+    public string FMemberId { get; set; }
 
-    public string fUserName { get; set; }
+    public string FUserName { get; set; }
 
-    public string fPostContent { get; set; }
+    public string FPostContent { get; set; }
 
-    public int? fLikes { get; set; }
+    public int? FLikes { get; set; }
 
-    public byte[] fTimestamp { get; set; }
+    public byte[] FTimestamp { get; set; }
 
-    public string fMemberType { get; set; }
+    public string FMemberType { get; set; }
 
-    public int? fParentCommentId { get; set; }
+    public int? FParentCommentId { get; set; }
 
-    public byte[] fFinStatement { get; set; }
+    public byte[] FFinStatement { get; set; }
 }

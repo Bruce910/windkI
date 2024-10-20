@@ -1,83 +1,82 @@
 ﻿@model IEnumerable<Final10._14.Models.TProduct>
+
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>商品列表</h1>
+<h1>Index</h1>
 
 <p>
-    <a asp-action="Create">新增</a>
+    <a asp-action="Create">Create New</a>
 </p>
-
-<form method="get" asp-action="Index">
-    <div class="form-group">
-        <label for="SearchName">搜尋</label>
-        <input type="text" placeholder="輸入名稱" class="form-control" id="SearchName" name="SearchName" value="@ViewData["SearchName"]" />
-    </div>
-    <button type="submit" class="btn btn-primary">查詢</button>
-</form>
-
 <table class="table">
     <thead>
         <tr>
-            <th>產品類別</th>
-            <th>贊助商</th>
-            <th>產品名稱</th>
-            <th>產品描述</th>
-            <th>銷售量</th>
-            <th>庫存量</th>
-            <th>單位幫助點數</th>
-            <th>狀態</th>
+            <th>
+                產品類別
+            </th>
+            <th>
+                贊助商
+            </th>
+            <th>
+                產品名稱
+            </th>
+            <th>
+                產品描述
+            </th>
+            <th>
+                銷售量
+            </th>
+            <th>
+                庫存量
+            </th>
+            <th>
+                單位幫助點數
+            </th>
+            <th>
+                狀態
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @{
-                        string categoryText = item.FProductCategoryId switch
-                        {
-                            1 => "人權",
-                            2 => "動物",
-                            3 => "環境",
-                            _ => "其他"
-                        };
-                    }
-                    @categoryText
-                </td>
-                <td>
-                    @{
-                        string sponsorCategoryText = item.FSponsorId switch
-                        {
-                            1 => "環保議題",
-                            2 => "動物救助",
-                            3 => "弱勢關懷",
-                            4 => "宗教迫害",
-                            5 => "人權守護",
-                            _ => "未知類別"
-                        };
-                    }
-                    @sponsorCategoryText
-                </td>
-                <td>@Html.DisplayFor(modelItem => item.FProductName)</td>
-                <td>@Html.DisplayFor(modelItem => item.FDescription)</td>
-                <td>@Html.DisplayFor(modelItem => item.FSales)</td>
-                <td>@Html.DisplayFor(modelItem => item.FStock)</td>
-                <td>@item.FUnitlHelpPoint 點</td>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FProductCategoryId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FSponsorId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FSales)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FUnitlHelpPoint)
+            </td>
+           @*  <td>
+                @Html.DisplayFor(modelItem => item.FStatus)
+            </td> *@
                 <td>
                     @{
                         var statusText = item.FStatus == 1 ? "販售中" : item.FStatus == 2 ? "未上架" : "未知狀態";
                     }
                     @statusText
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.FProductId">編輯</a> |
-                    <a asp-action="Details" asp-route-id="@item.FProductId">內容</a> |
-                    <a asp-action="Delete" asp-route-id="@item.FProductId">刪除</a>
-                </td>
-            </tr>
-        }
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FProductId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.FProductId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.FProductId">Delete</a>
+            </td>
+        </tr>
+}
     </tbody>
 </table>

@@ -5,13 +5,13 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class tLoginRecord
+public partial class TLoginRecord
 {
-    public int fLogId { get; set; }
+    public int FLogId { get; set; }
 
-    public string fMemberId { get; set; }
+    public string FMemberId { get; set; }
 
-    public byte[] fTimestamp { get; set; }
+    public byte[] FTimestamp { get; set; }
 
-    public string fIp { get; set; }
+    public string FIp { get; set; }
 }

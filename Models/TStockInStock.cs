@@ -5,37 +5,37 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class tStockInStock
+public partial class TStockInStock
 {
-    public string fMemberId { get; set; }
+    public string FMemberId { get; set; }
 
-    public string fBrokerId { get; set; }
+    public string FBrokerId { get; set; }
 
-    public int fStockId { get; set; }
+    public int FStockId { get; set; }
 
-    public string fStockName { get; set; }
+    public string FStockName { get; set; }
 
-    public string fTranType { get; set; }
+    public string FTranType { get; set; }
 
-    public int? fLeftStock { get; set; }
+    public int? FLeftStock { get; set; }
 
-    public int? fStockAdj { get; set; }
+    public int? FStockAdj { get; set; }
 
-    public int? fStockNow { get; set; }
+    public int? FStockNow { get; set; }
 
-    public int? fStockTran { get; set; }
+    public int? FStockTran { get; set; }
 
-    public decimal? fStockPriceN { get; set; }
+    public decimal? FStockPriceN { get; set; }
 
-    public decimal? fStockPriceT { get; set; }
+    public decimal? FStockPriceT { get; set; }
 
-    public decimal? fStockPriceTS { get; set; }
+    public decimal? FStockPriceTs { get; set; }
 
-    public decimal? fStockCost { get; set; }
+    public decimal? FStockCost { get; set; }
 
-    public decimal? fEstPro { get; set; }
+    public decimal? FEstPro { get; set; }
 
-    public double? fEstProP { get; set; }
+    public double? FEstProP { get; set; }
 
-    public decimal? fBalancePrice { get; set; }
+    public decimal? FBalancePrice { get; set; }
 }
