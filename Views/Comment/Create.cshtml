@@ -4,37 +4,25 @@
     ViewData["Title"] = "新增留言";
 }
 
-<h1>新增留言</h1>
+<h2>新增留言</h2>
 
-<h4>留言</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
-            @* 移除 FCommentId 輸入，因為它應該由數據庫自動生成 *@
-
-            @* 將 FPostId 改為隱藏字段，假設它從 URL 或其他地方獲取 *@
-            <input type="hidden" asp-for="FPostId" />
-
-            @* 移除 FUserId 輸入，因為它應該在控制器中設置 *@
-
-            <div class="form-group">
-                <label asp-for="FContent" class="control-label">留言內容</label>
-                <textarea asp-for="FContent" class="form-control" rows="5"></textarea>
-                <span asp-validation-for="FContent" class="text-danger"></span>
-            </div>
-            <div class="form-group mt-3">
-                <input type="submit" value="新增" class="btn btn-primary" />
-            </div>
-        </form>
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="FMemberId" class="control-label">會員ID</label>
+        <input asp-for="FMemberId" class="form-control" />
+        <span asp-validation-for="FMemberId" class="text-danger"></span>
     </div>
-</div>
-
-<div class="mt-3">
-    <a asp-action="List">返回留言列表</a>
-</div>
+    <div class="form-group">
+        <label asp-for="FContent" class="control-label">內容</label>
+        <textarea asp-for="FContent" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="FContent" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="新增" class="btn btn-primary" />
+        <a asp-action="List" class="btn btn-secondary">返回列表</a>
+    </div>
+</form>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
