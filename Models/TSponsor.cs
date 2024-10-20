@@ -5,21 +5,21 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class tSponsor
+public partial class TSponsor
 {
-    public int fSponsorId { get; set; }
+    public int FSponsorId { get; set; }
 
-    public string fSponsorName { get; set; }
+    public string FSponsorName { get; set; }
 
-    public int? fSponsorCategoryId { get; set; }
+    public int? FSponsorCategoryId { get; set; }
 
-    public string fAddress { get; set; }
+    public string FAddress { get; set; }
 
-    public string fPhone { get; set; }
+    public string FPhone { get; set; }
 
-    public decimal? fCapital { get; set; }
+    public decimal? FCapital { get; set; }
 
-    public string fIntroduction { get; set; }
+    public string FIntroduction { get; set; }
 
-    public int? fStatus { get; set; }
+    public int? FStatus { get; set; }
 }

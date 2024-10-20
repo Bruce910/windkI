@@ -5,17 +5,17 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class tPointList
+public partial class TPointList
 {
-    public int fPointListId { get; set; }
+    public int FPointListId { get; set; }
 
-    public string fMemberId { get; set; }
+    public string FMemberId { get; set; }
 
-    public int? fMatchId { get; set; }
+    public int? FMatchId { get; set; }
 
-    public int? fOrderId { get; set; }
+    public int? FOrderId { get; set; }
 
-    public int? fSourse { get; set; }
+    public int? FSourse { get; set; }
 
-    public DateTime? fRecordTime { get; set; }
+    public DateTime? FRecordTime { get; set; }
 }

@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class tBroker
+public partial class TBroker
 {
-    public string fBrokerId { get; set; }
+    public string FBrokerId { get; set; }
 
-    public string fBrokerName { get; set; }
+    public string FBrokerName { get; set; }
 }

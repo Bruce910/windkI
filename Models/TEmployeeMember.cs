@@ -5,39 +5,37 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class tEmployeeMember
+public partial class TEmployeeMember
 {
-    public int fEmployeeSId { get; set; }
+    public int FEmployeeSid { get; set; }
 
-    public string fMemberId { get; set; }
+    public string FMemberId { get; set; }
 
-    public string fAccount { get; set; }
+    public string FAccount { get; set; }
 
-    public string fPassword { get; set; }
+    public string FPassword { get; set; }
 
-    public string fUserName { get; set; }
+    public string FUserName { get; set; }
 
-    public string fFirstName { get; set; }
+    public string FFirstName { get; set; }
 
-    public string fLastName { get; set; }
+    public string FLastName { get; set; }
 
-    public string fEmail { get; set; }
+    public string FEmail { get; set; }
 
-    public string fIdentification { get; set; }
+    public string FIdentification { get; set; }
 
-    public DateOnly? fBirthDate { get; set; }
+    public DateOnly? FBirthDate { get; set; }
 
-    public string fSex { get; set; }
+    public string FSex { get; set; }
 
-    public DateOnly? fRegDate { get; set; }
+    public DateOnly? FRegDate { get; set; }
 
-    public string fStatus { get; set; }
+    public string FStatus { get; set; }
 
-    public int? fPermissions { get; set; }
+    public int? FPermissions { get; set; }
 
-    public string fIp { get; set; }
+    public string FIp { get; set; }
 
-    public byte[] fMemberImage { get; set; }
-
-    public string fMemberImagePath { get; set; }
+    public byte[] FMemberImage { get; set; }
 }

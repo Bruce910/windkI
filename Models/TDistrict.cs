@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class tDistrict
+public partial class TDistrict
 {
-    public int fDistrictId { get; set; }
+    public int FDistrictId { get; set; }
 
-    public string fDistrict { get; set; }
+    public string FDistrict { get; set; }
 }

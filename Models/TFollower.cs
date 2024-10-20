@@ -5,11 +5,11 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class tFollower
+public partial class TFollower
 {
-    public int fFollowerSId { get; set; }
+    public int FFollowerSid { get; set; }
 
-    public string fFollowerMemberId { get; set; }
+    public string FFollowerMemberId { get; set; }
 
-    public string fFollowingMemberId { get; set; }
+    public string FFollowingMemberId { get; set; }
 }
