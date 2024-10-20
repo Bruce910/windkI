@@ -14,7 +14,7 @@ namespace Final10._14.Controllers
     public class CommentController : Controller
     {
         private readonly WealthierAndKinderContext _context;
-        private readonly int _pageSize = 10; // 每頁顯示的評論數量
+        private readonly int _defaultPageSize = 10;
         private const string SessionKeyDraft = "_CommentDraft";
 
         public CommentController(WealthierAndKinderContext context)
@@ -22,8 +22,19 @@ namespace Final10._14.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> List(string searchString, int? pageNumber)
+        public async Task<IActionResult> List(string searchString, int? pageNumber, int? pageSize)
         {
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = ViewData["CurrentFilter"] as string;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+
             var comments = from c in _context.TComments
                            select c;
 
@@ -33,8 +44,10 @@ namespace Final10._14.Controllers
                                        || s.FMemberId.Contains(searchString));
             }
 
-            int pageSize = _pageSize;
-            return View(await PaginatedList<TComment>.CreateAsync(comments.AsNoTracking(), pageNumber ?? 1, pageSize));
+            int actualPageSize = pageSize ?? _defaultPageSize;
+            ViewData["PageSize"] = actualPageSize;
+
+            return View(await PaginatedList<TComment>.CreateAsync(comments.AsNoTracking(), pageNumber ?? 1, actualPageSize));
         }
 
         public IActionResult Create()

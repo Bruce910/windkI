@@ -20,7 +20,7 @@
     <div class="col-md-6">
         <form asp-action="List" method="get" class="form-inline justify-content-md-end">
             <div class="input-group">
-                <input type="text" name="SearchString" class="form-control" placeholder="搜索評論或會員ID" aria-label="搜索評論或會員ID">
+                <input type="text" name="SearchString" class="form-control" placeholder="搜索評論或會員ID" aria-label="搜索評論或會員ID" value="@ViewData["CurrentFilter"]">
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary" type="submit">
                         <i class="fas fa-search"></i> 搜索
@@ -60,29 +60,50 @@
         </tbody>
     </table>
 
-    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    <div class="row">
+        <div class="col-md-6">
+            @{
+                var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+            }
 
-    <nav aria-label="Page navigation">
-        <ul class="pagination">
-            <li class="page-item @prevDisabled">
-                <a asp-action="List"
-                   asp-route-pageNumber="@(Model.PageIndex - 1)"
-                   asp-route-searchString="@ViewData["CurrentFilter"]"
-                   class="page-link">
-                    上一頁
-                </a>
-            </li>
-            <li class="page-item @nextDisabled">
-                <a asp-action="List"
-                   asp-route-pageNumber="@(Model.PageIndex + 1)"
-                   asp-route-searchString="@ViewData["CurrentFilter"]"
-                   class="page-link">
-                    下一頁
-                </a>
-            </li>
-        </ul>
-    </nav>
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li class="page-item @prevDisabled">
+                        <a asp-action="List"
+                           asp-route-pageNumber="@(Model.PageIndex - 1)"
+                           asp-route-searchString="@ViewData["CurrentFilter"]"
+                           asp-route-pageSize="@ViewData["PageSize"]"
+                           class="page-link">
+                            上一頁
+                        </a>
+                    </li>
+                    <li class="page-item @nextDisabled">
+                        <a asp-action="List"
+                           asp-route-pageNumber="@(Model.PageIndex + 1)"
+                           asp-route-searchString="@ViewData["CurrentFilter"]"
+                           asp-route-pageSize="@ViewData["PageSize"]"
+                           class="page-link">
+                            下一頁
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-6">
+            <form asp-action="List" method="get" class="form-inline justify-content-md-end">
+                <div class="input-group">
+                    <label for="PageSize" class="mr-2">每頁顯示:</label>
+                    <input type="number" name="PageSize" id="PageSize" class="form-control" min="1" max="100" value="@ViewData["PageSize"]">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit">設置</button>
+                    </div>
+                </div>
+                <input type="hidden" name="SearchString" value="@ViewData["CurrentFilter"]" />
+                <input type="hidden" name="PageNumber" value="1" />
+            </form>
+        </div>
+    </div>
 }
 else
 {
