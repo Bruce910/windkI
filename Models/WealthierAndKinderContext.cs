@@ -253,6 +253,9 @@ public partial class WealthierAndKinderContext : DbContext
                 .HasMaxLength(20)
                 .HasColumnName("fMemberId");
             entity.Property(e => e.FMemberImage).HasColumnName("fMemberImage");
+            entity.Property(e => e.FMemberImagePath)
+                .HasMaxLength(50)
+                .HasColumnName("fMemberImagePath");
             entity.Property(e => e.FPassword)
                 .HasMaxLength(20)
                 .HasColumnName("fPassword");
@@ -314,6 +317,9 @@ public partial class WealthierAndKinderContext : DbContext
                 .HasMaxLength(20)
                 .HasColumnName("fMemberId");
             entity.Property(e => e.FMemberImage).HasColumnName("fMemberImage");
+            entity.Property(e => e.FMemberImagePath)
+                .HasMaxLength(50)
+                .HasColumnName("fMemberImagePath");
             entity.Property(e => e.FPassword)
                 .HasMaxLength(20)
                 .HasColumnName("fPassword");
@@ -694,6 +700,9 @@ public partial class WealthierAndKinderContext : DbContext
                 .HasMaxLength(20)
                 .HasColumnName("fMemberId");
             entity.Property(e => e.FMemberImage).HasColumnName("fMemberImage");
+            entity.Property(e => e.FMemberImagePath)
+                .HasMaxLength(50)
+                .HasColumnName("fMemberImagePath");
             entity.Property(e => e.FPassword)
                 .HasMaxLength(20)
                 .HasColumnName("fPassword");

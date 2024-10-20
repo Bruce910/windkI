@@ -1,5 +1,5 @@
 ﻿// ReSharper disable InconsistentNaming
-namespace Final10._14.Models.MemberModels
+namespace Final10._14.TModels.MemberModels
 {
     public class CDictionary
     {
