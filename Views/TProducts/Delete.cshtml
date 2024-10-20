@@ -4,66 +4,92 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
-
-<h3>Are you sure you want to delete this?</h3>
+<h1>刪除</h1>
 <div>
-    <h4>TProduct</h4>
+    <h4>商品</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FProductCategoryId)
+        <dt class="col-sm-2">
+            產品分類
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FProductCategoryId)
+        <dd class="col-sm-10">
+            @{
+                string categoryText = Model.FProductCategoryId switch
+                {
+                    1 => "助人",
+                    2 => "動物",
+                    3 => "環境",
+                    _ => "其他"
+                };
+            }
+            @categoryText
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FSponsorId)
+        <dt class="col-sm-2">
+            贊助商
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FSponsorId)
+        <dd class="col-sm-10">
+            @{
+                string sponsorCategoryText = Model.FSponsorId switch
+                {
+                    1 => "佛手救甘心慈善團體",
+                    2 => "狗狗救難團",
+                    3 => "攜老扶幼大隊",
+                    4 => "淨灘團",
+                    5 => "維尼練習法扶輪社",
+                    _ => "未知類別"
+                };
+            }
+            @sponsorCategoryText
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FProductName)
+        <dt class="col-sm-2">
+            產品名稱
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.FProductName)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FDescription)
+        <dt class="col-sm-2">
+            描述
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.FDescription)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FSales)
+        <dt class="col-sm-2">
+            銷量
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.FSales)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FStock)
+        <dt class="col-sm-2">
+            庫存
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.FStock)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FUnitlHelpPoint)
+        <dt class="col-sm-2">
+            所需點數
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FUnitlHelpPoint)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FUnitlHelpPoint) 點
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FStatus)
+        <dt class="col-sm-2">
+            狀態
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FStatus)
+        <dd class="col-sm-10">
+            @{
+                string statusText = Model.FStatus switch
+                {
+                    1 => "販售中",
+                    2 => "缺貨",
+                    _ => "未知狀態"
+                };
+            }
+            @statusText
         </dd>
     </dl>
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="FProductId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="刪除" class="btn btn-danger" /> |
+        <a asp-action="Index">取消</a>
     </form>
 </div>

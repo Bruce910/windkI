@@ -5,23 +5,23 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class TTranRecord
+public partial class tTranRecord
 {
-    public int FTranId { get; set; }
+    public int fTranId { get; set; }
 
-    public string FMemberId { get; set; }
+    public string fMemberId { get; set; }
 
-    public int FStockId { get; set; }
+    public int fStockId { get; set; }
 
-    public string FBrokerId { get; set; }
+    public string fBrokerId { get; set; }
 
-    public string FTranType { get; set; }
+    public string fTranType { get; set; }
 
-    public string FBuySell { get; set; }
+    public string fBuySell { get; set; }
 
-    public int FStockQty { get; set; }
+    public int fStockQty { get; set; }
 
-    public decimal FStockPrice { get; set; }
+    public decimal fStockPrice { get; set; }
 
-    public DateTime FTranTime { get; set; }
+    public DateTime fTranTime { get; set; }
 }

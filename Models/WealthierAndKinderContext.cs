@@ -13,943 +13,604 @@ public partial class WealthierAndKinderContext : DbContext
     {
     }
 
-    public virtual DbSet<TBlock> TBlocks { get; set; }
+    public virtual DbSet<tBlock> tBlocks { get; set; }
 
-    public virtual DbSet<TBroker> TBrokers { get; set; }
+    public virtual DbSet<tBroker> tBrokers { get; set; }
 
-    public virtual DbSet<TComment> TComments { get; set; }
+    public virtual DbSet<tComment> tComments { get; set; }
 
-    public virtual DbSet<TCustomerInvestAccount> TCustomerInvestAccounts { get; set; }
+    public virtual DbSet<tCustomerInvestAccount> tCustomerInvestAccounts { get; set; }
 
-    public virtual DbSet<TCustomerPreference> TCustomerPreferences { get; set; }
+    public virtual DbSet<tCustomerPreference> tCustomerPreferences { get; set; }
 
-    public virtual DbSet<TCustomerStra> TCustomerStras { get; set; }
+    public virtual DbSet<tCustomerStra> tCustomerStras { get; set; }
 
-    public virtual DbSet<TDistrict> TDistricts { get; set; }
+    public virtual DbSet<tDistrict> tDistricts { get; set; }
 
-    public virtual DbSet<TEmployeeMember> TEmployeeMembers { get; set; }
+    public virtual DbSet<tEmployeeMember> tEmployeeMembers { get; set; }
 
-    public virtual DbSet<TFollower> TFollowers { get; set; }
+    public virtual DbSet<tFollower> tFollowers { get; set; }
 
-    public virtual DbSet<TGroupMember> TGroupMembers { get; set; }
+    public virtual DbSet<tGroupMember> tGroupMembers { get; set; }
 
-    public virtual DbSet<THashtag> THashtags { get; set; }
+    public virtual DbSet<tHashtag> tHashtags { get; set; }
 
-    public virtual DbSet<THelp> THelps { get; set; }
+    public virtual DbSet<tHelp> tHelps { get; set; }
 
-    public virtual DbSet<THelpClass> THelpClasses { get; set; }
+    public virtual DbSet<tHelpClass> tHelpClasses { get; set; }
 
-    public virtual DbSet<THelpMessageRecord> THelpMessageRecords { get; set; }
+    public virtual DbSet<tHelpMessageRecord> tHelpMessageRecords { get; set; }
 
-    public virtual DbSet<THelpSkill> THelpSkills { get; set; }
+    public virtual DbSet<tHelpSkill> tHelpSkills { get; set; }
 
-    public virtual DbSet<TInvestRecord> TInvestRecords { get; set; }
+    public virtual DbSet<tInvestRecord> tInvestRecords { get; set; }
 
-    public virtual DbSet<TLike> TLikes { get; set; }
+    public virtual DbSet<tLike> tLikes { get; set; }
 
-    public virtual DbSet<TLoginRecord> TLoginRecords { get; set; }
+    public virtual DbSet<tLoginRecord> tLoginRecords { get; set; }
 
-    public virtual DbSet<TMatch> TMatches { get; set; }
+    public virtual DbSet<tMatch> tMatches { get; set; }
 
-    public virtual DbSet<TMemberSkill> TMemberSkills { get; set; }
+    public virtual DbSet<tMemberSkill> tMemberSkills { get; set; }
 
-    public virtual DbSet<TMessage> TMessages { get; set; }
+    public virtual DbSet<tMessage> tMessages { get; set; }
 
-    public virtual DbSet<TMgerScActivity> TMgerScActivities { get; set; }
+    public virtual DbSet<tMgerScActivity> tMgerScActivities { get; set; }
 
-    public virtual DbSet<TMgrScFile> TMgrScFiles { get; set; }
+    public virtual DbSet<tMgrScFile> tMgrScFiles { get; set; }
 
-    public virtual DbSet<TOrder> TOrders { get; set; }
+    public virtual DbSet<tOrder> tOrders { get; set; }
 
-    public virtual DbSet<TOrderDetail> TOrderDetails { get; set; }
+    public virtual DbSet<tOrderDetail> tOrderDetails { get; set; }
 
-    public virtual DbSet<TPersonMember> TPersonMembers { get; set; }
+    public virtual DbSet<tPersonMember> tPersonMembers { get; set; }
 
-    public virtual DbSet<TPointList> TPointLists { get; set; }
+    public virtual DbSet<tPointList> tPointLists { get; set; }
 
-    public virtual DbSet<TPost> TPosts { get; set; }
+    public virtual DbSet<tPost> tPosts { get; set; }
 
-    public virtual DbSet<TProduct> TProducts { get; set; }
+    public virtual DbSet<tProduct> tProducts { get; set; }
 
-    public virtual DbSet<TProductCategory> TProductCategories { get; set; }
+    public virtual DbSet<tProductCategory> tProductCategories { get; set; }
 
-    public virtual DbSet<TSponsor> TSponsors { get; set; }
+    public virtual DbSet<tSponsor> tSponsors { get; set; }
 
-    public virtual DbSet<TSponsorCategory> TSponsorCategories { get; set; }
+    public virtual DbSet<tSponsorCategory> tSponsorCategories { get; set; }
 
-    public virtual DbSet<TStock> TStocks { get; set; }
+    public virtual DbSet<tStock> tStocks { get; set; }
 
-    public virtual DbSet<TStockInStock> TStockInStocks { get; set; }
+    public virtual DbSet<tStockInStock> tStockInStocks { get; set; }
 
-    public virtual DbSet<TTranRecord> TTranRecords { get; set; }
+    public virtual DbSet<tTranRecord> tTranRecords { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<TBlock>(entity =>
+        modelBuilder.Entity<tBlock>(entity =>
         {
-            entity.HasKey(e => e.FBlockSid);
+            entity.HasKey(e => e.fBlockSId);
 
             entity.ToTable("tBlock");
 
-            entity.Property(e => e.FBlockSid).HasColumnName("fBlockSId");
-            entity.Property(e => e.FBlockType)
+            entity.Property(e => e.fBlockType)
                 .HasMaxLength(1)
                 .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("fBlockType");
-            entity.Property(e => e.FBlockUserId)
-                .HasMaxLength(20)
-                .HasColumnName("fBlockUserId");
-            entity.Property(e => e.FMemberId)
-                .HasMaxLength(20)
-                .HasColumnName("fMemberId");
+                .IsFixedLength();
+            entity.Property(e => e.fBlockUserId).HasMaxLength(20);
+            entity.Property(e => e.fMemberId).HasMaxLength(20);
         });
 
-        modelBuilder.Entity<TBroker>(entity =>
+        modelBuilder.Entity<tBroker>(entity =>
         {
-            entity.HasKey(e => e.FBrokerId).HasName("PK__tBroker__41F14AB6745A9C6D");
+            entity.HasKey(e => e.fBrokerId).HasName("PK__tBroker__41F14AB6745A9C6D");
 
             entity.ToTable("tBroker");
 
-            entity.Property(e => e.FBrokerId)
-                .HasMaxLength(50)
-                .HasColumnName("fBrokerId");
-            entity.Property(e => e.FBrokerName)
+            entity.Property(e => e.fBrokerId).HasMaxLength(50);
+            entity.Property(e => e.fBrokerName)
                 .IsRequired()
-                .HasMaxLength(100)
-                .HasColumnName("fBrokerName");
+                .HasMaxLength(100);
         });
 
-        modelBuilder.Entity<TComment>(entity =>
+        modelBuilder.Entity<tComment>(entity =>
         {
-            entity.HasKey(e => e.FCommentId);
+            entity.HasKey(e => e.fCommentId);
 
             entity.ToTable("tComment");
 
-            entity.Property(e => e.FCommentId).HasColumnName("fCommentId");
-            entity.Property(e => e.FContent)
-                .HasMaxLength(500)
-                .HasColumnName("fContent");
-            entity.Property(e => e.FCratedAt).HasColumnName("fCratedAT");
-            entity.Property(e => e.FMemberId)
-                .HasMaxLength(20)
-                .HasColumnName("fMemberId");
-            entity.Property(e => e.FPostId).HasColumnName("fPostId");
-            entity.Property(e => e.FUpdateAt).HasColumnName("fUpdateAt");
+            entity.Property(e => e.fContent).HasMaxLength(500);
+            entity.Property(e => e.fMemberId).HasMaxLength(20);
         });
 
-        modelBuilder.Entity<TCustomerInvestAccount>(entity =>
+        modelBuilder.Entity<tCustomerInvestAccount>(entity =>
         {
-            entity.HasKey(e => e.FInvestAccountId).HasName("PK__tCustome__B185030D21627549");
+            entity.HasKey(e => e.fInvestAccountId).HasName("PK__tCustome__B185030D21627549");
 
             entity.ToTable("tCustomerInvestAccount");
 
-            entity.Property(e => e.FInvestAccountId)
-                .ValueGeneratedNever()
-                .HasColumnName("fInvestAccountId");
-            entity.Property(e => e.FBrokerId)
+            entity.Property(e => e.fInvestAccountId).ValueGeneratedNever();
+            entity.Property(e => e.fBrokerId)
                 .IsRequired()
-                .HasMaxLength(50)
-                .HasColumnName("fBrokerId");
-            entity.Property(e => e.FInvestAccount)
+                .HasMaxLength(50);
+            entity.Property(e => e.fInvestAccount)
                 .IsRequired()
-                .HasMaxLength(100)
-                .HasColumnName("fInvestAccount");
-            entity.Property(e => e.FInvestPass)
+                .HasMaxLength(100);
+            entity.Property(e => e.fInvestPass)
                 .IsRequired()
-                .HasMaxLength(100)
-                .HasColumnName("fInvestPass");
-            entity.Property(e => e.FMemberId)
+                .HasMaxLength(100);
+            entity.Property(e => e.fMemberId)
                 .IsRequired()
-                .HasMaxLength(50)
-                .HasColumnName("fMemberId");
+                .HasMaxLength(50);
         });
 
-        modelBuilder.Entity<TCustomerPreference>(entity =>
+        modelBuilder.Entity<tCustomerPreference>(entity =>
         {
-            entity.HasKey(e => e.FPreferId).HasName("PK__tCustome__04C2DDC6E0778F80");
+            entity.HasKey(e => e.fPreferId).HasName("PK__tCustome__04C2DDC6E0778F80");
 
             entity.ToTable("tCustomerPreference");
 
-            entity.Property(e => e.FPreferId).HasColumnName("fPreferId");
-            entity.Property(e => e.FMemberId)
+            entity.Property(e => e.fMemberId)
                 .IsRequired()
-                .HasMaxLength(50)
-                .HasColumnName("fMemberId");
-            entity.Property(e => e.FStockId).HasColumnName("fStockId");
+                .HasMaxLength(50);
         });
 
-        modelBuilder.Entity<TCustomerStra>(entity =>
+        modelBuilder.Entity<tCustomerStra>(entity =>
         {
-            entity.HasKey(e => e.FStraId).HasName("PK__tCustome__3FE09AD1FA411830");
+            entity.HasKey(e => e.fStraId).HasName("PK__tCustome__3FE09AD1FA411830");
 
             entity.ToTable("tCustomerStra");
 
-            entity.Property(e => e.FStraId).HasColumnName("fStraId");
-            entity.Property(e => e.F10Ma)
-                .HasColumnType("money")
-                .HasColumnName("f10MA");
-            entity.Property(e => e.F20Ma)
-                .HasColumnType("money")
-                .HasColumnName("f20MA");
-            entity.Property(e => e.F5Ma)
-                .HasColumnType("money")
-                .HasColumnName("f5MA");
-            entity.Property(e => e.FBuySell).HasColumnName("fBuySell");
-            entity.Property(e => e.FDvalue).HasColumnName("fDValue");
-            entity.Property(e => e.FKvalue).HasColumnName("fKValue");
-            entity.Property(e => e.FMemberId)
+            entity.Property(e => e.f10MA).HasColumnType("money");
+            entity.Property(e => e.f20MA).HasColumnType("money");
+            entity.Property(e => e.f5MA).HasColumnType("money");
+            entity.Property(e => e.fMemberId)
                 .IsRequired()
-                .HasMaxLength(50)
-                .HasColumnName("fMemberId");
-            entity.Property(e => e.FPriceSet)
-                .HasColumnType("money")
-                .HasColumnName("fPriceSet");
-            entity.Property(e => e.FStockId).HasColumnName("fStockId");
-            entity.Property(e => e.FTranType)
-                .HasMaxLength(50)
-                .HasColumnName("fTranType");
+                .HasMaxLength(50);
+            entity.Property(e => e.fPriceSet).HasColumnType("money");
+            entity.Property(e => e.fTranType).HasMaxLength(50);
         });
 
-        modelBuilder.Entity<TDistrict>(entity =>
+        modelBuilder.Entity<tDistrict>(entity =>
         {
-            entity.HasKey(e => e.FDistrictId);
+            entity.HasKey(e => e.fDistrictId);
 
             entity.ToTable("tDistrict");
 
-            entity.Property(e => e.FDistrictId).HasColumnName("fDistrictId");
-            entity.Property(e => e.FDistrict)
-                .HasMaxLength(50)
-                .HasColumnName("fDistrict");
+            entity.Property(e => e.fDistrict).HasMaxLength(50);
         });
 
-        modelBuilder.Entity<TEmployeeMember>(entity =>
+        modelBuilder.Entity<tEmployeeMember>(entity =>
         {
-            entity.HasKey(e => e.FEmployeeSid);
+            entity.HasKey(e => e.fEmployeeSId);
 
             entity.ToTable("tEmployeeMember");
 
-            entity.Property(e => e.FEmployeeSid).HasColumnName("fEmployeeSId");
-            entity.Property(e => e.FAccount)
-                .HasMaxLength(50)
-                .HasColumnName("fAccount");
-            entity.Property(e => e.FBirthDate).HasColumnName("fBirthDate");
-            entity.Property(e => e.FEmail)
-                .HasMaxLength(50)
-                .HasColumnName("fEmail");
-            entity.Property(e => e.FFirstName)
-                .HasMaxLength(50)
-                .HasColumnName("fFirstName");
-            entity.Property(e => e.FIdentification)
-                .HasMaxLength(20)
-                .HasColumnName("fIdentification");
-            entity.Property(e => e.FIp)
-                .HasMaxLength(50)
-                .HasColumnName("fIp");
-            entity.Property(e => e.FLastName)
-                .HasMaxLength(50)
-                .HasColumnName("fLastName");
-            entity.Property(e => e.FMemberId)
-                .HasMaxLength(20)
-                .HasColumnName("fMemberId");
-            entity.Property(e => e.FMemberImage).HasColumnName("fMemberImage");
-            entity.Property(e => e.FPassword)
-                .HasMaxLength(20)
-                .HasColumnName("fPassword");
-            entity.Property(e => e.FPermissions).HasColumnName("fPermissions");
-            entity.Property(e => e.FRegDate).HasColumnName("fRegDate");
-            entity.Property(e => e.FSex)
+            entity.Property(e => e.fAccount).HasMaxLength(50);
+            entity.Property(e => e.fEmail).HasMaxLength(50);
+            entity.Property(e => e.fFirstName).HasMaxLength(50);
+            entity.Property(e => e.fIdentification).HasMaxLength(20);
+            entity.Property(e => e.fIp).HasMaxLength(50);
+            entity.Property(e => e.fLastName).HasMaxLength(50);
+            entity.Property(e => e.fMemberId).HasMaxLength(20);
+            entity.Property(e => e.fMemberImagePath).HasMaxLength(50);
+            entity.Property(e => e.fPassword).HasMaxLength(20);
+            entity.Property(e => e.fSex)
                 .HasMaxLength(1)
                 .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("fSex");
-            entity.Property(e => e.FStatus)
+                .IsFixedLength();
+            entity.Property(e => e.fStatus)
                 .HasMaxLength(1)
                 .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("fStatus");
-            entity.Property(e => e.FUserName)
-                .HasMaxLength(50)
-                .HasColumnName("fUserName");
+                .IsFixedLength();
+            entity.Property(e => e.fUserName).HasMaxLength(50);
         });
 
-        modelBuilder.Entity<TFollower>(entity =>
+        modelBuilder.Entity<tFollower>(entity =>
         {
-            entity.HasKey(e => e.FFollowerSid);
+            entity.HasKey(e => e.fFollowerSId);
 
             entity.ToTable("tFollower");
 
-            entity.Property(e => e.FFollowerSid).HasColumnName("fFollowerSId");
-            entity.Property(e => e.FFollowerMemberId)
-                .HasMaxLength(20)
-                .HasColumnName("fFollowerMemberId");
-            entity.Property(e => e.FFollowingMemberId)
-                .HasMaxLength(20)
-                .HasColumnName("fFollowingMemberId");
+            entity.Property(e => e.fFollowerMemberId).HasMaxLength(20);
+            entity.Property(e => e.fFollowingMemberId).HasMaxLength(20);
         });
 
-        modelBuilder.Entity<TGroupMember>(entity =>
+        modelBuilder.Entity<tGroupMember>(entity =>
         {
-            entity.HasKey(e => e.FGroupSid);
+            entity.HasKey(e => e.fGroupSId);
 
             entity.ToTable("tGroupMember");
 
-            entity.Property(e => e.FGroupSid).HasColumnName("fGroupSId");
-            entity.Property(e => e.FAccount)
-                .HasMaxLength(50)
-                .HasColumnName("fAccount");
-            entity.Property(e => e.FCoLocation)
-                .HasMaxLength(50)
-                .HasColumnName("fCoLocation");
-            entity.Property(e => e.FCorporation)
-                .HasMaxLength(50)
-                .HasColumnName("fCorporation");
-            entity.Property(e => e.FEmail)
-                .HasMaxLength(50)
-                .HasColumnName("fEmail");
-            entity.Property(e => e.FIp)
-                .HasMaxLength(50)
-                .HasColumnName("fIp");
-            entity.Property(e => e.FMemberId)
-                .HasMaxLength(20)
-                .HasColumnName("fMemberId");
-            entity.Property(e => e.FMemberImage).HasColumnName("fMemberImage");
-            entity.Property(e => e.FPassword)
-                .HasMaxLength(20)
-                .HasColumnName("fPassword");
-            entity.Property(e => e.FPermissions).HasColumnName("fPermissions");
-            entity.Property(e => e.FRegDate).HasColumnName("fRegDate");
-            entity.Property(e => e.FRepresentName)
-                .HasMaxLength(50)
-                .HasColumnName("fRepresentName");
-            entity.Property(e => e.FStatus)
+            entity.Property(e => e.fAccount).HasMaxLength(50);
+            entity.Property(e => e.fCoLocation).HasMaxLength(50);
+            entity.Property(e => e.fCorporation).HasMaxLength(50);
+            entity.Property(e => e.fEmail).HasMaxLength(50);
+            entity.Property(e => e.fIp).HasMaxLength(50);
+            entity.Property(e => e.fMemberId).HasMaxLength(20);
+            entity.Property(e => e.fMemberImagePath).HasMaxLength(50);
+            entity.Property(e => e.fPassword).HasMaxLength(20);
+            entity.Property(e => e.fRepresentName).HasMaxLength(50);
+            entity.Property(e => e.fStatus)
                 .HasMaxLength(1)
                 .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("fStatus");
-            entity.Property(e => e.FTotalCapital).HasColumnName("fTotalCapital");
-            entity.Property(e => e.FUniBusinessNo)
-                .HasMaxLength(50)
-                .HasColumnName("fUniBusinessNo");
+                .IsFixedLength();
+            entity.Property(e => e.fUniBusinessNo).HasMaxLength(50);
         });
 
-        modelBuilder.Entity<THashtag>(entity =>
+        modelBuilder.Entity<tHashtag>(entity =>
         {
-            entity.HasKey(e => e.FHashTagSid);
+            entity.HasKey(e => e.fHashTagSId);
 
             entity.ToTable("tHashtag");
 
-            entity.Property(e => e.FHashTagSid).HasColumnName("fHashTagSId");
-            entity.Property(e => e.FHashTag)
+            entity.Property(e => e.fHashTag)
                 .HasMaxLength(10)
                 .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("fHashTag");
-            entity.Property(e => e.FMemberId)
-                .HasMaxLength(20)
-                .HasColumnName("fMemberId");
-            entity.Property(e => e.FMemberType)
+                .IsFixedLength();
+            entity.Property(e => e.fMemberId).HasMaxLength(20);
+            entity.Property(e => e.fMemberType)
                 .HasMaxLength(1)
                 .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("fMemberType");
-            entity.Property(e => e.FPostId).HasColumnName("fPostId");
+                .IsFixedLength();
         });
 
-        modelBuilder.Entity<THelp>(entity =>
+        modelBuilder.Entity<tHelp>(entity =>
         {
-            entity.HasKey(e => e.FHelpId);
+            entity.HasKey(e => e.fHelpId);
 
             entity.ToTable("tHelp");
 
-            entity.Property(e => e.FHelpId).HasColumnName("fHelpId");
-            entity.Property(e => e.FDistrictId).HasColumnName("fDistrictId");
-            entity.Property(e => e.FExpDate)
-                .HasColumnType("datetime")
-                .HasColumnName("fExpDate");
-            entity.Property(e => e.FHelpClassId).HasColumnName("fHelpClassId");
-            entity.Property(e => e.FHelpDescribe)
-                .HasMaxLength(200)
-                .HasColumnName("fHelpDescribe");
-            entity.Property(e => e.FHelpSkillId).HasColumnName("fHelpSkillId");
-            entity.Property(e => e.FHelpStatus).HasColumnName("fHelpStatus");
-            entity.Property(e => e.FMemberId)
-                .HasMaxLength(20)
-                .HasColumnName("fMemberId");
-            entity.Property(e => e.FMemberType).HasColumnName("fMemberType");
-            entity.Property(e => e.FMfdDate)
-                .HasColumnType("datetime")
-                .HasColumnName("fMfdDate");
-            entity.Property(e => e.FName)
-                .HasMaxLength(50)
-                .HasColumnName("fName");
-            entity.Property(e => e.FNid)
-                .HasMaxLength(50)
-                .HasColumnName("fNId");
-            entity.Property(e => e.FPhone)
-                .HasMaxLength(50)
-                .HasColumnName("fPhone");
-            entity.Property(e => e.FTaxId).HasColumnName("fTaxID");
+            entity.Property(e => e.fExpDate).HasColumnType("datetime");
+            entity.Property(e => e.fHelpDescribe).HasMaxLength(200);
+            entity.Property(e => e.fMemberId).HasMaxLength(20);
+            entity.Property(e => e.fMfdDate).HasColumnType("datetime");
+            entity.Property(e => e.fNId).HasMaxLength(50);
+            entity.Property(e => e.fName).HasMaxLength(50);
+            entity.Property(e => e.fPhone).HasMaxLength(50);
         });
 
-        modelBuilder.Entity<THelpClass>(entity =>
+        modelBuilder.Entity<tHelpClass>(entity =>
         {
-            entity.HasKey(e => e.FHelpClassId);
+            entity.HasKey(e => e.fHelpClassId);
 
             entity.ToTable("tHelpClass");
 
-            entity.Property(e => e.FHelpClassId).HasColumnName("fHelpClassId");
-            entity.Property(e => e.FHelpClass)
-                .HasMaxLength(50)
-                .HasColumnName("fHelpClass");
+            entity.Property(e => e.fHelpClass).HasMaxLength(50);
         });
 
-        modelBuilder.Entity<THelpMessageRecord>(entity =>
+        modelBuilder.Entity<tHelpMessageRecord>(entity =>
         {
             entity
                 .HasNoKey()
                 .ToTable("tHelpMessageRecord");
 
-            entity.Property(e => e.FContent)
-                .HasMaxLength(200)
-                .HasColumnName("fContent");
-            entity.Property(e => e.FHelpId).HasColumnName("fHelpId");
-            entity.Property(e => e.FMessageRecord)
-                .ValueGeneratedOnAdd()
-                .HasColumnName("fMessageRecord");
-            entity.Property(e => e.FPublicOrNot).HasColumnName("fPublicOrNot");
-            entity.Property(e => e.FSendDate)
-                .HasColumnType("datetime")
-                .HasColumnName("fSendDate");
+            entity.Property(e => e.fContent).HasMaxLength(200);
+            entity.Property(e => e.fMessageRecord).ValueGeneratedOnAdd();
+            entity.Property(e => e.fSendDate).HasColumnType("datetime");
         });
 
-        modelBuilder.Entity<THelpSkill>(entity =>
+        modelBuilder.Entity<tHelpSkill>(entity =>
         {
             entity
                 .HasNoKey()
                 .ToTable("tHelpSkill");
 
-            entity.Property(e => e.FHelpSkill)
-                .HasMaxLength(50)
-                .HasColumnName("fHelpSkill");
-            entity.Property(e => e.FHelpSkillId)
-                .ValueGeneratedOnAdd()
-                .HasColumnName("fHelpSkillId");
+            entity.Property(e => e.fHelpSkill).HasMaxLength(50);
+            entity.Property(e => e.fHelpSkillId).ValueGeneratedOnAdd();
         });
 
-        modelBuilder.Entity<TInvestRecord>(entity =>
+        modelBuilder.Entity<tInvestRecord>(entity =>
         {
-            entity.HasKey(e => e.FRepoId).HasName("PK__tInvestR__0ECC57CCA8608E4C");
+            entity.HasKey(e => e.fRepoId).HasName("PK__tInvestR__0ECC57CCA8608E4C");
 
             entity.ToTable("tInvestRecord");
 
-            entity.Property(e => e.FRepoId)
-                .ValueGeneratedNever()
-                .HasColumnName("fRepoId");
-            entity.Property(e => e.FCost)
-                .HasColumnType("money")
-                .HasColumnName("fCost");
-            entity.Property(e => e.FDealPrice)
-                .HasColumnType("money")
-                .HasColumnName("fDealPrice");
-            entity.Property(e => e.FEndDate)
-                .HasColumnType("datetime")
-                .HasColumnName("fEndDate");
-            entity.Property(e => e.FMemberId)
+            entity.Property(e => e.fRepoId).ValueGeneratedNever();
+            entity.Property(e => e.fCost).HasColumnType("money");
+            entity.Property(e => e.fDealPrice).HasColumnType("money");
+            entity.Property(e => e.fEndDate).HasColumnType("datetime");
+            entity.Property(e => e.fMemberId)
                 .IsRequired()
-                .HasMaxLength(50)
-                .HasColumnName("fMemberId");
-            entity.Property(e => e.FProSum).HasColumnName("fProSum");
-            entity.Property(e => e.FProTsum).HasColumnName("fProTSum");
-            entity.Property(e => e.FSoldTime)
-                .HasColumnType("datetime")
-                .HasColumnName("fSoldTime");
-            entity.Property(e => e.FStartDate)
-                .HasColumnType("datetime")
-                .HasColumnName("fStartDate");
-            entity.Property(e => e.FStockId).HasColumnName("fStockId");
-            entity.Property(e => e.FStockQty).HasColumnName("fStockQty");
+                .HasMaxLength(50);
+            entity.Property(e => e.fSoldTime).HasColumnType("datetime");
+            entity.Property(e => e.fStartDate).HasColumnType("datetime");
         });
 
-        modelBuilder.Entity<TLike>(entity =>
+        modelBuilder.Entity<tLike>(entity =>
         {
-            entity.HasKey(e => e.FLikesSid);
+            entity.HasKey(e => e.fLikesSId);
 
-            entity.ToTable("tLikes");
-
-            entity.Property(e => e.FLikesSid).HasColumnName("fLikesSId");
-            entity.Property(e => e.FPostId)
+            entity.Property(e => e.fPostId)
                 .HasMaxLength(10)
-                .IsFixedLength()
-                .HasColumnName("fPostId");
-            entity.Property(e => e.FTimestamp)
+                .IsFixedLength();
+            entity.Property(e => e.fTimestamp)
                 .HasMaxLength(10)
-                .IsFixedLength()
-                .HasColumnName("fTimestamp");
-            entity.Property(e => e.FUserId)
+                .IsFixedLength();
+            entity.Property(e => e.fUserId)
                 .HasMaxLength(10)
-                .IsFixedLength()
-                .HasColumnName("fUserId");
+                .IsFixedLength();
         });
 
-        modelBuilder.Entity<TLoginRecord>(entity =>
+        modelBuilder.Entity<tLoginRecord>(entity =>
         {
-            entity.HasKey(e => e.FLogId);
+            entity.HasKey(e => e.fLogId);
 
             entity.ToTable("tLoginRecord");
 
-            entity.Property(e => e.FLogId).HasColumnName("fLogId");
-            entity.Property(e => e.FIp)
-                .HasMaxLength(50)
-                .HasColumnName("fIp");
-            entity.Property(e => e.FMemberId)
-                .HasMaxLength(20)
-                .HasColumnName("fMemberId");
-            entity.Property(e => e.FTimestamp)
+            entity.Property(e => e.fIp).HasMaxLength(50);
+            entity.Property(e => e.fMemberId).HasMaxLength(20);
+            entity.Property(e => e.fTimestamp)
                 .IsRowVersion()
-                .IsConcurrencyToken()
-                .HasColumnName("fTimestamp");
+                .IsConcurrencyToken();
         });
 
-        modelBuilder.Entity<TMatch>(entity =>
+        modelBuilder.Entity<tMatch>(entity =>
         {
-            entity.HasKey(e => e.FMatchId);
+            entity.HasKey(e => e.fMatchId);
 
             entity.ToTable("tMatch");
 
-            entity.Property(e => e.FMatchId).HasColumnName("fMatchId");
-            entity.Property(e => e.FGrade).HasColumnName("fGrade");
-            entity.Property(e => e.FGradeDateTime)
+            entity.Property(e => e.fGradeDateTime)
                 .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime")
-                .HasColumnName("fGradeDateTime");
-            entity.Property(e => e.FHelpId).HasColumnName("fHelpId");
-            entity.Property(e => e.FMatchDateTime)
+                .HasColumnType("datetime");
+            entity.Property(e => e.fMatchDateTime)
                 .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime")
-                .HasColumnName("fMatchDateTime");
-            entity.Property(e => e.FMatchStatus).HasColumnName("fMatchStatus");
-            entity.Property(e => e.FMemberId)
-                .HasMaxLength(20)
-                .HasColumnName("fMemberId");
-            entity.Property(e => e.FMessage)
-                .HasMaxLength(200)
-                .HasColumnName("fMessage");
-            entity.Property(e => e.FPoint).HasColumnName("fPoint");
+                .HasColumnType("datetime");
+            entity.Property(e => e.fMemberId).HasMaxLength(20);
+            entity.Property(e => e.fMessage).HasMaxLength(200);
         });
 
-        modelBuilder.Entity<TMemberSkill>(entity =>
+        modelBuilder.Entity<tMemberSkill>(entity =>
         {
             entity
                 .HasNoKey()
                 .ToTable("tMemberSkill");
 
-            entity.Property(e => e.FHelpSkillId).HasColumnName("fHelpSkillId");
-            entity.Property(e => e.FMemberId)
-                .HasMaxLength(20)
-                .HasColumnName("fMemberId");
+            entity.Property(e => e.fMemberId).HasMaxLength(20);
         });
 
-        modelBuilder.Entity<TMessage>(entity =>
+        modelBuilder.Entity<tMessage>(entity =>
         {
-            entity.HasKey(e => e.FMessid);
+            entity.HasKey(e => e.fMessid);
 
             entity.ToTable("tMessage");
 
-            entity.Property(e => e.FMessid).HasColumnName("fMessid");
-            entity.Property(e => e.FMessContent)
-                .HasMaxLength(50)
-                .HasColumnName("fMessContent");
-            entity.Property(e => e.FRid)
-                .HasMaxLength(20)
-                .HasColumnName("fRId");
-            entity.Property(e => e.FSid)
-                .HasMaxLength(20)
-                .HasColumnName("fSId");
-            entity.Property(e => e.FTimestamp)
+            entity.Property(e => e.fMessContent).HasMaxLength(50);
+            entity.Property(e => e.fRId).HasMaxLength(20);
+            entity.Property(e => e.fSId).HasMaxLength(20);
+            entity.Property(e => e.fTimestamp)
                 .IsRowVersion()
-                .IsConcurrencyToken()
-                .HasColumnName("fTimestamp");
+                .IsConcurrencyToken();
         });
 
-        modelBuilder.Entity<TMgerScActivity>(entity =>
+        modelBuilder.Entity<tMgerScActivity>(entity =>
         {
             entity
                 .HasNoKey()
                 .ToTable("tMgerScActivity");
 
-            entity.Property(e => e.FActivityId)
-                .ValueGeneratedOnAdd()
-                .HasColumnName("fActivityId");
-            entity.Property(e => e.FActivityType)
-                .HasMaxLength(100)
-                .HasColumnName("fActivityType");
-            entity.Property(e => e.FMemberId)
-                .HasMaxLength(20)
-                .HasColumnName("fMemberId");
-            entity.Property(e => e.FOccurreAt)
+            entity.Property(e => e.fActivityId).ValueGeneratedOnAdd();
+            entity.Property(e => e.fActivityType).HasMaxLength(100);
+            entity.Property(e => e.fMemberId).HasMaxLength(20);
+            entity.Property(e => e.fOccurreAt)
                 .IsRowVersion()
-                .IsConcurrencyToken()
-                .HasColumnName("fOccurreAt");
+                .IsConcurrencyToken();
         });
 
-        modelBuilder.Entity<TMgrScFile>(entity =>
+        modelBuilder.Entity<tMgrScFile>(entity =>
         {
             entity
                 .HasNoKey()
                 .ToTable("tMgrScFile");
 
-            entity.Property(e => e.FFileId)
-                .ValueGeneratedOnAdd()
-                .HasColumnName("fFileId");
-            entity.Property(e => e.FFileName)
-                .HasMaxLength(256)
-                .HasColumnName("fFileName");
-            entity.Property(e => e.FFilePath)
-                .HasMaxLength(256)
-                .HasColumnName("fFilePath");
-            entity.Property(e => e.FFileType)
-                .HasMaxLength(50)
-                .HasColumnName("fFileType");
-            entity.Property(e => e.FMemberId)
+            entity.Property(e => e.fFileId).ValueGeneratedOnAdd();
+            entity.Property(e => e.fFileName).HasMaxLength(256);
+            entity.Property(e => e.fFilePath).HasMaxLength(256);
+            entity.Property(e => e.fFileType).HasMaxLength(50);
+            entity.Property(e => e.fMemberId)
                 .HasMaxLength(20)
-                .IsFixedLength()
-                .HasColumnName("fMemberId");
-            entity.Property(e => e.FUploadateAt)
+                .IsFixedLength();
+            entity.Property(e => e.fUploadateAt)
                 .IsRowVersion()
-                .IsConcurrencyToken()
-                .HasColumnName("fUploadateAt");
+                .IsConcurrencyToken();
         });
 
-        modelBuilder.Entity<TOrder>(entity =>
+        modelBuilder.Entity<tOrder>(entity =>
         {
-            entity.HasKey(e => e.FOrderId);
+            entity.HasKey(e => e.fOrderId);
 
             entity.ToTable("tOrder");
 
-            entity.Property(e => e.FOrderId).HasColumnName("fOrderId");
-            entity.Property(e => e.FBeginTime)
-                .HasColumnType("datetime")
-                .HasColumnName("fBeginTime");
-            entity.Property(e => e.FExecStatus).HasColumnName("fExecStatus");
-            entity.Property(e => e.FFinishTime)
-                .HasColumnType("datetime")
-                .HasColumnName("fFinishTime");
-            entity.Property(e => e.FMemberId)
-                .HasMaxLength(20)
-                .HasColumnName("fMemberId");
-            entity.Property(e => e.FOrderTime)
-                .HasColumnType("datetime")
-                .HasColumnName("fOrderTime");
-            entity.Property(e => e.FProof)
-                .HasColumnType("image")
-                .HasColumnName("fProof");
-            entity.Property(e => e.FStatus).HasColumnName("fStatus");
-            entity.Property(e => e.FTotalHelpPoint).HasColumnName("fTotalHelpPoint");
+            entity.Property(e => e.fBeginTime).HasColumnType("datetime");
+            entity.Property(e => e.fFinishTime).HasColumnType("datetime");
+            entity.Property(e => e.fMemberId).HasMaxLength(20);
+            entity.Property(e => e.fOrderTime).HasColumnType("datetime");
+            entity.Property(e => e.fProof).HasColumnType("image");
         });
 
-        modelBuilder.Entity<TOrderDetail>(entity =>
+        modelBuilder.Entity<tOrderDetail>(entity =>
         {
             entity
                 .HasNoKey()
                 .ToTable("tOrderDetail");
 
-            entity.Property(e => e.FAmount).HasColumnName("fAmount");
-            entity.Property(e => e.FHelpPoint).HasColumnName("fHelpPoint");
-            entity.Property(e => e.FOrderDetailId)
-                .ValueGeneratedOnAdd()
-                .HasColumnName("fOrderDetailId");
-            entity.Property(e => e.FOrderId).HasColumnName("fOrderId");
-            entity.Property(e => e.FProductId).HasColumnName("fProductId");
+            entity.Property(e => e.fOrderDetailId).ValueGeneratedOnAdd();
         });
 
-        modelBuilder.Entity<TPersonMember>(entity =>
+        modelBuilder.Entity<tPersonMember>(entity =>
         {
-            entity.HasKey(e => e.FPersonSid);
+            entity.HasKey(e => e.fPersonSId);
 
             entity.ToTable("tPersonMember");
 
-            entity.Property(e => e.FPersonSid).HasColumnName("fPersonSId");
-            entity.Property(e => e.FAccount)
-                .HasMaxLength(50)
-                .HasColumnName("fAccount");
-            entity.Property(e => e.FBirthDate).HasColumnName("fBirthDate");
-            entity.Property(e => e.FDistrictId).HasColumnName("fDistrictId");
-            entity.Property(e => e.FEmail)
-                .HasMaxLength(50)
-                .HasColumnName("fEmail");
-            entity.Property(e => e.FFirstName)
-                .HasMaxLength(50)
-                .HasColumnName("fFirstName");
-            entity.Property(e => e.FIdentification)
-                .HasMaxLength(20)
-                .HasColumnName("fIdentification");
-            entity.Property(e => e.FIp)
-                .HasMaxLength(50)
-                .HasColumnName("fIp");
-            entity.Property(e => e.FLastName)
-                .HasMaxLength(50)
-                .HasColumnName("fLastName");
-            entity.Property(e => e.FMemberId)
-                .HasMaxLength(20)
-                .HasColumnName("fMemberId");
-            entity.Property(e => e.FMemberImage).HasColumnName("fMemberImage");
-            entity.Property(e => e.FPassword)
-                .HasMaxLength(20)
-                .HasColumnName("fPassword");
-            entity.Property(e => e.FPermissions).HasColumnName("fPermissions");
-            entity.Property(e => e.FRegDate).HasColumnName("fRegDate");
-            entity.Property(e => e.FSex)
+            entity.Property(e => e.fAccount).HasMaxLength(50);
+            entity.Property(e => e.fEmail).HasMaxLength(50);
+            entity.Property(e => e.fFirstName).HasMaxLength(50);
+            entity.Property(e => e.fIdentification).HasMaxLength(20);
+            entity.Property(e => e.fIp).HasMaxLength(50);
+            entity.Property(e => e.fLastName).HasMaxLength(50);
+            entity.Property(e => e.fMemberId).HasMaxLength(20);
+            entity.Property(e => e.fMemberImagePath).HasMaxLength(50);
+            entity.Property(e => e.fPassword).HasMaxLength(20);
+            entity.Property(e => e.fSex)
                 .HasMaxLength(1)
                 .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("fSex");
-            entity.Property(e => e.FStatus)
+                .IsFixedLength();
+            entity.Property(e => e.fStatus)
                 .HasMaxLength(1)
                 .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("fStatus");
-            entity.Property(e => e.FTotalAsset).HasColumnName("fTotalAsset");
-            entity.Property(e => e.FTotalHelpPoint).HasColumnName("fTotalHelpPoint");
-            entity.Property(e => e.FUserName)
-                .HasMaxLength(50)
-                .HasColumnName("fUserName");
+                .IsFixedLength();
+            entity.Property(e => e.fUserName).HasMaxLength(50);
         });
 
-        modelBuilder.Entity<TPointList>(entity =>
+        modelBuilder.Entity<tPointList>(entity =>
         {
-            entity.HasKey(e => e.FPointListId);
+            entity.HasKey(e => e.fPointListId);
 
             entity.ToTable("tPointList");
 
-            entity.Property(e => e.FPointListId).HasColumnName("fPointListId");
-            entity.Property(e => e.FMatchId).HasColumnName("fMatchId");
-            entity.Property(e => e.FMemberId)
-                .HasMaxLength(20)
-                .HasColumnName("fMemberId");
-            entity.Property(e => e.FOrderId).HasColumnName("fOrderId");
-            entity.Property(e => e.FRecordTime)
-                .HasColumnType("datetime")
-                .HasColumnName("fRecordTime");
-            entity.Property(e => e.FSourse).HasColumnName("fSourse");
+            entity.Property(e => e.fMemberId).HasMaxLength(20);
+            entity.Property(e => e.fRecordTime).HasColumnType("datetime");
         });
 
-        modelBuilder.Entity<TPost>(entity =>
+        modelBuilder.Entity<tPost>(entity =>
         {
-            entity.HasKey(e => e.FPostId);
+            entity.HasKey(e => e.fPostId);
 
             entity.ToTable("tPost");
 
-            entity.Property(e => e.FPostId).HasColumnName("fPostId");
-            entity.Property(e => e.FFinStatement)
-                .HasColumnType("image")
-                .HasColumnName("fFinStatement");
-            entity.Property(e => e.FLikes).HasColumnName("fLikes");
-            entity.Property(e => e.FMemberId)
-                .HasMaxLength(20)
-                .HasColumnName("fMemberId");
-            entity.Property(e => e.FMemberType)
+            entity.Property(e => e.fFinStatement).HasColumnType("image");
+            entity.Property(e => e.fMemberId).HasMaxLength(20);
+            entity.Property(e => e.fMemberType)
                 .HasMaxLength(1)
                 .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("fMemberType");
-            entity.Property(e => e.FParentCommentId).HasColumnName("fParentCommentId");
-            entity.Property(e => e.FPostContent)
-                .HasMaxLength(256)
-                .HasColumnName("fPostContent");
-            entity.Property(e => e.FTimestamp)
+                .IsFixedLength();
+            entity.Property(e => e.fPostContent).HasMaxLength(256);
+            entity.Property(e => e.fTimestamp)
                 .IsRowVersion()
-                .IsConcurrencyToken()
-                .HasColumnName("fTimestamp");
-            entity.Property(e => e.FUserName)
-                .HasMaxLength(50)
-                .HasColumnName("fUserName");
+                .IsConcurrencyToken();
+            entity.Property(e => e.fUserName).HasMaxLength(50);
         });
 
-        modelBuilder.Entity<TProduct>(entity =>
+        modelBuilder.Entity<tProduct>(entity =>
         {
-            entity.HasKey(e => e.FProductId);
+            entity.HasKey(e => e.fProductId);
 
             entity.ToTable("tProduct");
 
-            entity.Property(e => e.FProductId).HasColumnName("fProductId");
-            entity.Property(e => e.FDescription)
+            entity.Property(e => e.fDescription)
                 .HasMaxLength(200)
-                .IsUnicode(false)
-                .HasColumnName("fDescription");
-            entity.Property(e => e.FProductCategoryId).HasColumnName("fProductCategoryId");
-            entity.Property(e => e.FProductName)
+                .IsUnicode(false);
+            entity.Property(e => e.fProductName)
                 .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("fProductName");
-            entity.Property(e => e.FSales).HasColumnName("fSales");
-            entity.Property(e => e.FSponsorId).HasColumnName("fSponsorId");
-            entity.Property(e => e.FStatus).HasColumnName("fStatus");
-            entity.Property(e => e.FStock).HasColumnName("fStock");
-            entity.Property(e => e.FUnitlHelpPoint).HasColumnName("fUnitlHelpPoint");
+                .IsUnicode(false);
         });
 
-        modelBuilder.Entity<TProductCategory>(entity =>
+        modelBuilder.Entity<tProductCategory>(entity =>
         {
-            entity.HasKey(e => e.FProductCategoryId);
+            entity.HasKey(e => e.fProductCategoryId);
 
             entity.ToTable("tProductCategory");
 
-            entity.Property(e => e.FProductCategoryId).HasColumnName("fProductCategoryId");
-            entity.Property(e => e.FDescription)
+            entity.Property(e => e.fDescription)
                 .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("fDescription");
-            entity.Property(e => e.FProductCategoryName)
+                .IsUnicode(false);
+            entity.Property(e => e.fProductCategoryName)
                 .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("fProductCategoryName");
+                .IsUnicode(false);
         });
 
-        modelBuilder.Entity<TSponsor>(entity =>
+        modelBuilder.Entity<tSponsor>(entity =>
         {
-            entity.HasKey(e => e.FSponsorId);
+            entity.HasKey(e => e.fSponsorId);
 
             entity.ToTable("tSponsor");
 
-            entity.Property(e => e.FSponsorId).HasColumnName("fSponsorId");
-            entity.Property(e => e.FAddress)
+            entity.Property(e => e.fAddress)
                 .HasMaxLength(64)
-                .IsUnicode(false)
-                .HasColumnName("fAddress");
-            entity.Property(e => e.FCapital)
-                .HasColumnType("money")
-                .HasColumnName("fCapital");
-            entity.Property(e => e.FIntroduction)
+                .IsUnicode(false);
+            entity.Property(e => e.fCapital).HasColumnType("money");
+            entity.Property(e => e.fIntroduction)
                 .HasMaxLength(200)
-                .IsUnicode(false)
-                .HasColumnName("fIntroduction");
-            entity.Property(e => e.FPhone)
+                .IsUnicode(false);
+            entity.Property(e => e.fPhone)
                 .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("fPhone");
-            entity.Property(e => e.FSponsorCategoryId).HasColumnName("fSponsorCategoryId");
-            entity.Property(e => e.FSponsorName)
+                .IsUnicode(false);
+            entity.Property(e => e.fSponsorName)
                 .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("fSponsorName");
-            entity.Property(e => e.FStatus).HasColumnName("fStatus");
+                .IsUnicode(false);
         });
 
-        modelBuilder.Entity<TSponsorCategory>(entity =>
+        modelBuilder.Entity<tSponsorCategory>(entity =>
         {
-            entity.HasKey(e => e.FSponsorCategoryId);
+            entity.HasKey(e => e.fSponsorCategoryId);
 
             entity.ToTable("tSponsorCategory");
 
-            entity.Property(e => e.FSponsorCategoryId).HasColumnName("fSponsorCategoryId");
-            entity.Property(e => e.FDescriptionFDescription)
+            entity.Property(e => e.fDescription__fDescription)
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("fDescription\r\nfDescription");
-            entity.Property(e => e.FSponsorCategoryrName)
+            entity.Property(e => e.fSponsorCategoryrName)
                 .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("fSponsorCategoryrName");
+                .IsUnicode(false);
         });
 
-        modelBuilder.Entity<TStock>(entity =>
+        modelBuilder.Entity<tStock>(entity =>
         {
-            entity.HasKey(e => e.FStockId).HasName("PK__tStock__966DF63F3E161DE1");
+            entity.HasKey(e => e.fStockId).HasName("PK__tStock__966DF63F3E161DE1");
 
             entity.ToTable("tStock");
 
-            entity.Property(e => e.FStockId)
-                .ValueGeneratedNever()
-                .HasColumnName("fStockId");
-            entity.Property(e => e.FStockName)
+            entity.Property(e => e.fStockId).ValueGeneratedNever();
+            entity.Property(e => e.fStockName)
                 .IsRequired()
-                .HasMaxLength(100)
-                .HasColumnName("fStockName");
-            entity.Property(e => e.FStockPriceN)
-                .HasColumnType("money")
-                .HasColumnName("fStockPriceN");
+                .HasMaxLength(100);
+            entity.Property(e => e.fStockPriceN).HasColumnType("money");
         });
 
-        modelBuilder.Entity<TStockInStock>(entity =>
+        modelBuilder.Entity<tStockInStock>(entity =>
         {
-            entity.HasKey(e => e.FMemberId).HasName("PK__tStockIn__C9781B19DBBF50DE");
+            entity.HasKey(e => e.fMemberId).HasName("PK__tStockIn__C9781B19DBBF50DE");
 
             entity.ToTable("tStockInStock");
 
-            entity.Property(e => e.FMemberId)
-                .HasMaxLength(50)
-                .HasColumnName("fMemberId");
-            entity.Property(e => e.FBalancePrice)
-                .HasColumnType("money")
-                .HasColumnName("fBalancePrice");
-            entity.Property(e => e.FBrokerId)
+            entity.Property(e => e.fMemberId).HasMaxLength(50);
+            entity.Property(e => e.fBalancePrice).HasColumnType("money");
+            entity.Property(e => e.fBrokerId)
                 .IsRequired()
-                .HasMaxLength(50)
-                .HasColumnName("fBrokerId");
-            entity.Property(e => e.FEstPro)
-                .HasColumnType("money")
-                .HasColumnName("fEstPro");
-            entity.Property(e => e.FEstProP).HasColumnName("fEstProP");
-            entity.Property(e => e.FLeftStock).HasColumnName("fLeftStock");
-            entity.Property(e => e.FStockAdj).HasColumnName("fStockAdj");
-            entity.Property(e => e.FStockCost)
-                .HasColumnType("money")
-                .HasColumnName("fStockCost");
-            entity.Property(e => e.FStockId).HasColumnName("fStockId");
-            entity.Property(e => e.FStockName)
+                .HasMaxLength(50);
+            entity.Property(e => e.fEstPro).HasColumnType("money");
+            entity.Property(e => e.fStockCost).HasColumnType("money");
+            entity.Property(e => e.fStockName)
                 .IsRequired()
-                .HasMaxLength(100)
-                .HasColumnName("fStockName");
-            entity.Property(e => e.FStockNow).HasColumnName("fStockNow");
-            entity.Property(e => e.FStockPriceN)
-                .HasColumnType("money")
-                .HasColumnName("fStockPriceN");
-            entity.Property(e => e.FStockPriceT)
-                .HasColumnType("money")
-                .HasColumnName("fStockPriceT");
-            entity.Property(e => e.FStockPriceTs)
-                .HasColumnType("money")
-                .HasColumnName("fStockPriceTS");
-            entity.Property(e => e.FStockTran).HasColumnName("fStockTran");
-            entity.Property(e => e.FTranType)
-                .HasMaxLength(50)
-                .HasColumnName("fTranType");
+                .HasMaxLength(100);
+            entity.Property(e => e.fStockPriceN).HasColumnType("money");
+            entity.Property(e => e.fStockPriceT).HasColumnType("money");
+            entity.Property(e => e.fStockPriceTS).HasColumnType("money");
+            entity.Property(e => e.fTranType).HasMaxLength(50);
         });
 
-        modelBuilder.Entity<TTranRecord>(entity =>
+        modelBuilder.Entity<tTranRecord>(entity =>
         {
-            entity.HasKey(e => e.FTranId).HasName("PK__tTranRec__56FABBBF8D192D15");
+            entity.HasKey(e => e.fTranId).HasName("PK__tTranRec__56FABBBF8D192D15");
 
             entity.ToTable("tTranRecord");
 
-            entity.Property(e => e.FTranId)
-                .ValueGeneratedNever()
-                .HasColumnName("fTranId");
-            entity.Property(e => e.FBrokerId)
+            entity.Property(e => e.fTranId).ValueGeneratedNever();
+            entity.Property(e => e.fBrokerId)
                 .IsRequired()
-                .HasMaxLength(50)
-                .HasColumnName("fBrokerId");
-            entity.Property(e => e.FBuySell)
+                .HasMaxLength(50);
+            entity.Property(e => e.fBuySell)
                 .IsRequired()
-                .HasMaxLength(5)
-                .HasColumnName("fBuySell");
-            entity.Property(e => e.FMemberId)
+                .HasMaxLength(5);
+            entity.Property(e => e.fMemberId)
                 .IsRequired()
-                .HasMaxLength(50)
-                .HasColumnName("fMemberId");
-            entity.Property(e => e.FStockId).HasColumnName("fStockId");
-            entity.Property(e => e.FStockPrice)
-                .HasColumnType("money")
-                .HasColumnName("fStockPrice");
-            entity.Property(e => e.FStockQty).HasColumnName("fStockQty");
-            entity.Property(e => e.FTranTime)
-                .HasColumnType("datetime")
-                .HasColumnName("fTranTime");
-            entity.Property(e => e.FTranType)
+                .HasMaxLength(50);
+            entity.Property(e => e.fStockPrice).HasColumnType("money");
+            entity.Property(e => e.fTranTime).HasColumnType("datetime");
+            entity.Property(e => e.fTranType)
                 .IsRequired()
-                .HasMaxLength(50)
-                .HasColumnName("fTranType");
+                .HasMaxLength(50);
         });
 
         OnModelCreatingPartial(modelBuilder);

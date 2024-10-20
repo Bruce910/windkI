@@ -13,25 +13,25 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FSponsorName)
+                贊助商名稱
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FSponsorCategoryId)
+                贊助商類別
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FAddress)
+                地址
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FPhone)
+                電話
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FCapital)
+                資本額
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FIntroduction)
+                介紹
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FStatus)
+                合作狀態
             </th>
             <th></th>
         </tr>
@@ -42,8 +42,20 @@
             <td>
                 @Html.DisplayFor(modelItem => item.FSponsorName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FSponsorCategoryId)
+            
+                <td>
+                        @{
+                            string categoryText = item.FSponsorCategoryId switch
+                            {
+                                1 => "環保議題",
+                                2 => "動物救助",
+                                3 => "弱勢關懷",
+                                4 => "宗教迫害",
+                                5 => "人權守護",
+                                _ => "未知類別"
+                            };
+                        }
+                        @categoryText
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FAddress)
@@ -52,13 +64,19 @@
                 @Html.DisplayFor(modelItem => item.FPhone)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FCapital)
+                    @{
+                        var capitalInTenThousands = Math.Floor(item.FCapital.GetValueOrDefault() / 10000m);
+                    }
+                    @capitalInTenThousands 萬元
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FIntroduction)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FStatus)
+                    @{
+                        var statusText = item.FStatus == 1 ? "合作中" : item.FStatus == 2 ? "關閉" : "未知狀態";
+                    }
+                    @statusText
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.FSponsorId">編輯</a> |

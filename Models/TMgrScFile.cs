@@ -5,17 +5,17 @@ using System.Collections.Generic;
 
 namespace Final10._14.Models;
 
-public partial class TMgrScFile
+public partial class tMgrScFile
 {
-    public int FFileId { get; set; }
+    public int fFileId { get; set; }
 
-    public string FMemberId { get; set; }
+    public string fMemberId { get; set; }
 
-    public string FFileName { get; set; }
+    public string fFileName { get; set; }
 
-    public string FFilePath { get; set; }
+    public string fFilePath { get; set; }
 
-    public string FFileType { get; set; }
+    public string fFileType { get; set; }
 
-    public byte[] FUploadateAt { get; set; }
+    public byte[] fUploadateAt { get; set; }
 }
