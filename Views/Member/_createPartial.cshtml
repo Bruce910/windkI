@@ -1,7 +1,7 @@
 ﻿
 
 <div class="form-popup" id="myForm">
-    <form action="/Member/Create" method="post" class="form-container">
+    <form id="input_to_be_validated" action="/Member/Create" method="post" class="form-container">
         <!-- 替換為你的表單處理路徑 -->
         <div class="form-group">
             <label for="FMemberId">會員ID</label>
@@ -69,7 +69,7 @@
             <span class="text-danger" id="FMemberImagePathError"></span>
         </div>
         <div class="form-group">
-            <input type="submit" value="Create" class="btn btn-primary" />
+            <input type="submit" value="Create" class="btn btn-primary" onclick="refreshList()"/>
         </div>
         <div class="form-group">
             <input type="button" value="Cancel" class="btn btn-danger" onclick="closeForm()" />

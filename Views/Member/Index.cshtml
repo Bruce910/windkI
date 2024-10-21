@@ -45,6 +45,7 @@
             bottom: 0;
             background-color: rgba(0, 0, 0, 0.5);
             display: flex; /* 使用 Flexbox */
+            display: none; /* 使用 Flexbox */
             justify-content: center; /* 水平居中 */
             align-items: center; /* 垂直居中 */
         }
@@ -120,110 +121,7 @@
 <p>
     <a class="clickable" id="try" onclick="openForm()">ajaxCreate</a>
 </p>
-<div class="table-container">
-<table id="memberTable" class="Table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FMemberId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FAccount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FPassword)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FUserName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FFirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FLastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FEmail)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FIdentification)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FBirthDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FSex)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FRegDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FStatus)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FPermissions)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FIp)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FMemberId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FAccount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FPassword)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FUserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FFirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FLastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FEmail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FIdentification)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FBirthDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FSex)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FRegDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FStatus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FPermissions)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FIp)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.FEmployeeSid">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.FEmployeeSid" >Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.FEmployeeSid" onclick="return confirm('確定要刪除嗎?')">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-</div>
+@await Html.PartialAsync("_listPartial", Model)
 @section Scripts
 {
         <script>
@@ -259,15 +157,31 @@
             
         });
 
-        function updateOrders() {
-            $.ajax({
-                type: "GET",
-                url: "@Url.Action("Orders", "Customers")/" + CustomerId.value,
-            }).done(function (result) {
-                $("#Orders").html(result);
-            }).fail(function (e) {
-                alert(e.statusText);
-            });
+        function refreshList() {
+            event.preventDefault();
+            data = {
+                the_input_val: $("#input_to_be_validated").val()
+            };
+            console.log(data);
+            // $.post("/Member/AjaxCreate", data, function (data, status) {
+            //     if (status == "success") {
+            //         if (data == "invalid") {
+            //             alert("Invalid input");
+            //             // Form data is not sent... as expected
+            //         } else {
+            //             // Here I want to send the form data. But the event.preventDefault() prevents it from happening
+            //             // What do I put here to call the form's 'action' script with form data?
+            //         }
+            //     }
+            // });
+            // $.ajax({
+            //     type: "GET",
+            //     url: "@Url.Action("Orders", "Customers")/" + CustomerId.value,
+            // }).done(function (result) {
+            //     $("#Orders").html(result);
+            // }).fail(function (e) {
+            //     alert(e.statusText);
+            // });
         }
     </script>
 }

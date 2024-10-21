@@ -17,9 +17,11 @@ namespace Final10._14.Controllers.MemberControllers
 
             return View(datas);
         }
-        public async Task<IActionResult> Orders()
+        public async Task<IActionResult> PartialList()
         {
-            return PartialView("_OrdersPartial");
+            //Customer c = await _context.Customers.FindAsync(id);
+            IEnumerable<TEmployeeMember> datas = context.TEmployeeMembers;
+            return PartialView("_listPartial", datas);
         }
         // GET: MemberController/Details/5
         public ActionResult Details(int id)
@@ -36,21 +38,24 @@ namespace Final10._14.Controllers.MemberControllers
         // POST: MemberController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(TEmployeeMember newEmp)
+        public async Task<IActionResult> Create(TEmployeeMember newEmp)
         {
+            Console.WriteLine("callled!!!!!!!!!!");
             context.TEmployeeMembers.Add(newEmp);
             context.SaveChanges();
             return RedirectToAction(nameof(Index));
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<string> AjaxCreate(TEmployeeMember newEmp)
+        {
+            Console.WriteLine("callled!!!!!!!!!!");
+            context.TEmployeeMembers.Add(newEmp);
+            context.SaveChanges();
+            return "succ";
+
+        }
         // GET: MemberController/Edit/5
         public ActionResult Edit(int id)
         {
@@ -98,7 +103,7 @@ namespace Final10._14.Controllers.MemberControllers
                     context.SaveChanges();
                 }
             }
-            return RedirectToAction("List");
+            return RedirectToAction("Index");
         }
 
         // POST: MemberController/Delete/5
