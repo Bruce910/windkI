@@ -1,0 +1,68 @@
+﻿@model Final10._14.Models.TSponsor
+
+@{
+    ViewData["Title"] = "刪除";
+}
+
+<h1>刪除</h1>
+
+<div>
+
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            贊助商名稱
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FSponsorName)
+        </dd>
+        <dt class="col-sm-2">
+            贊助商類別
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FSponsorCategoryId)
+        </dd>
+        <dt class="col-sm-2">
+            地址
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FAddress)
+        </dd>
+        <dt class="col-sm-2">
+            電話
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FPhone)
+        </dd>
+        <dt class="col-sm-2">
+            資本額
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                var capitalInTenThousands = Math.Floor(Model.FCapital.GetValueOrDefault() / 10000m);
+            }
+            @capitalInTenThousands 萬元
+        </dd>
+        <dt class="col-sm-2">
+            介紹
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FIntroduction)
+        </dd>
+        <dt class="col-sm-2">
+            合作狀態
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                var statusText = Model.FStatus == 1 ? "合作中" : Model.FStatus == 2 ? "關閉" : "未知狀態";
+            }
+            @statusText
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="FSponsorId" />
+        <input type="submit" value="刪除" class="btn btn-danger" /> |
+        <a asp-action="Index">回贊助商列表</a>
+    </form>
+</div>

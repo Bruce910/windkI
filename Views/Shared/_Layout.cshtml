@@ -113,11 +113,21 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>點數商城</span>
-
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#ShoppingcollapsePages"
+                   aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>互助商城</span>
                 </a>
+                <div id="ShoppingcollapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">功能</h6>
+                        <a class="collapse-item" href="~/TSponsors">管理贊助商</a>
+                        <a class="collapse-item" href="~/TProducts">管理商品</a>
+                        <!--<a  class="collapse-item" href="~/TOrders">管理訂單</a>-->
+
+
+                    </div>
+                </div>
             </li>
 
             <!-- Nav Item - Tables -->

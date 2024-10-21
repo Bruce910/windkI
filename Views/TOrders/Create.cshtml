@@ -1,0 +1,68 @@
+﻿@model Final10._14.Models.TOrder
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>TOrder</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FMemberId" class="control-label"></label>
+                <input asp-for="FMemberId" class="form-control" />
+                <span asp-validation-for="FMemberId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FTotalHelpPoint" class="control-label"></label>
+                <input asp-for="FTotalHelpPoint" class="form-control" />
+                <span asp-validation-for="FTotalHelpPoint" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FStatus" class="control-label"></label>
+                <input asp-for="FStatus" class="form-control" />
+                <span asp-validation-for="FStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FOrderTime" class="control-label"></label>
+                <input asp-for="FOrderTime" class="form-control" />
+                <span asp-validation-for="FOrderTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FExecStatus" class="control-label"></label>
+                <input asp-for="FExecStatus" class="form-control" />
+                <span asp-validation-for="FExecStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FBeginTime" class="control-label"></label>
+                <input asp-for="FBeginTime" class="form-control" />
+                <span asp-validation-for="FBeginTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FFinishTime" class="control-label"></label>
+                <input asp-for="FFinishTime" class="form-control" />
+                <span asp-validation-for="FFinishTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FProof" class="control-label"></label>
+                <input asp-for="FProof" class="form-control" />
+                <span asp-validation-for="FProof" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
