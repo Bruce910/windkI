@@ -1,0 +1,133 @@
+﻿@model IEnumerable<Final10._14.Models.TStockInStock>
+
+@{
+    ViewData["Title"] = "StockList";
+}
+
+<h1>會員股票庫存</h1>
+@using (Html.BeginForm())
+{
+    @:關鍵字 @Html.TextBox("txtKeyword")
+    <input type="submit" value="查詢" />
+}
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<div style="max-height: 500px; overflow-y: auto;">
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FMemberId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FBrokerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FStockId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FStockName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FTranType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FLeftStock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FStockAdj)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FStockNow)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FStockTran)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FStockPriceN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FStockPriceT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FStockPriceTs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FStockCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FEstPro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FEstProP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FBalancePrice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FMemberId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FBrokerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FStockId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FStockName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FTranType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FLeftStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FStockAdj)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FStockNow)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FStockTran)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FStockPriceN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FStockPriceT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FStockPriceTs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FStockCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FEstPro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FEstProP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FBalancePrice)
+            </td>
+            <td>
+                        @Html.ActionLink("調整", "Edit", new { id = item.FInStockId }) |
+                @Html.ActionLink("全部賣出", "Delete", "StockNow", new { id = item.FInStockId }, new { onclick = "return confirm('確定要全部賣出嗎?')" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>

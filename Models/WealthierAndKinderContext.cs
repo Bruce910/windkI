@@ -882,13 +882,10 @@ public partial class WealthierAndKinderContext : DbContext
 
         modelBuilder.Entity<TStockInStock>(entity =>
         {
-            entity.HasKey(e => e.FMemberId).HasName("PK__tStockIn__C9781B19DBBF50DE");
+            entity
+                .HasNoKey()
+                .ToTable("tStockInStock");
 
-            entity.ToTable("tStockInStock");
-
-            entity.Property(e => e.FMemberId)
-                .HasMaxLength(50)
-                .HasColumnName("fMemberId");
             entity.Property(e => e.FBalancePrice)
                 .HasColumnType("money")
                 .HasColumnName("fBalancePrice");
@@ -900,7 +897,14 @@ public partial class WealthierAndKinderContext : DbContext
                 .HasColumnType("money")
                 .HasColumnName("fEstPro");
             entity.Property(e => e.FEstProP).HasColumnName("fEstProP");
+            entity.Property(e => e.FInStockId)
+                .ValueGeneratedOnAdd()
+                .HasColumnName("fInStockId");
             entity.Property(e => e.FLeftStock).HasColumnName("fLeftStock");
+            entity.Property(e => e.FMemberId)
+                .IsRequired()
+                .HasMaxLength(50)
+                .HasColumnName("fMemberId");
             entity.Property(e => e.FStockAdj).HasColumnName("fStockAdj");
             entity.Property(e => e.FStockCost)
                 .HasColumnType("money")

@@ -7,6 +7,7 @@ namespace Final10._14.Models;
 
 public partial class TStockInStock
 {
+    public int FInStockId { get; set; }
     public string FMemberId { get; set; }
 
     public string FBrokerId { get; set; }
