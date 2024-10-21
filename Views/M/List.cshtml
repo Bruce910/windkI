@@ -8,9 +8,34 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">媒合清單</h1>
-    <p>
-        <a asp-action="Create" class="btn btn-info">手動新增</a>
-    </p>
+    
+    <div class="d-flex align-items-center">
+        <p class="mb-0 ml-3">
+            <a asp-action="Create" class="btn btn-info">手動新增</a>
+        </p>
+        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group">
+                @using (Html.BeginForm())
+                {
+                    <div class="input-group">
+                        
+                        @Html.TextBox("txtKeyword", null, new { @class = "form-control bg-white border-2 small", placeholder = "請輸入關鍵字" })
+                        
+                    </div>
+                }
+
+                
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+       
+    </div>
+    <br />
+
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
