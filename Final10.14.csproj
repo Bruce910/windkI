@@ -34,4 +34,8 @@
     <Folder Include="Views\Match\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Match\" />
+  </ItemGroup>
+
 </Project>

@@ -8,6 +8,10 @@ namespace Final10._14.Models;
 
 public partial class WealthierAndKinderContext : DbContext
 {
+    public WealthierAndKinderContext()
+    {
+    }
+
     public WealthierAndKinderContext(DbContextOptions<WealthierAndKinderContext> options)
         : base(options)
     {

@@ -1,0 +1,29 @@
+﻿@model Final10._14.Models.TComment
+
+@{
+    ViewData["Title"] = "修改留言";
+}
+
+<h2>修改留言</h2>
+
+<form asp-action="Edit">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="FCommentId" />
+    <div  class="form-group">
+        <label asp-for="FMemberId" class="control-label">會員ID</label>
+        <input asp-for="FMemberId" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="FContent" class="control-label">內容</label>
+        <textarea asp-for="FContent" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="FContent" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="保存" class="btn btn-primary" />
+        <a asp-action="List" class="btn btn-secondary">返回列表</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
