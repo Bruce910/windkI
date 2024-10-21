@@ -42,6 +42,34 @@ namespace Final10._14.Controllers
             return RedirectToAction("StockList");
         }
 
+        public ActionResult Edit(int? id)
+        {
+            TStockInStock prod = _context.TStockInStocks.FirstOrDefault(p => p.FInStockId == id);
+            if (prod == null)
+            {
+                return RedirectToAction("StockList");
+            }
+            return View(prod);
+
+        }
+
+        [HttpPost]
+
+        public ActionResult Edit(TStockInStock inProd)
+        {
+            TStockInStock dbprod = _context.TStockInStocks.FirstOrDefault(p => p.FInStockId == inProd.FInStockId);
+            if (dbprod == null)
+                return RedirectToAction("StockList");
+            dbprod.FLeftStock = inProd.FLeftStock;
+            dbprod.FStockNow = inProd.FStockNow;
+            dbprod.FStockAdj = inProd.FStockAdj;
+            dbprod.FStockTran = inProd.FStockTran;
+            _context.SaveChanges();
+            return RedirectToAction("Stock");
+
+        }
+
+
 
     }
 }
