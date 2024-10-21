@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Final10._14.Models.TCustomerInvestAccount>
+
+@{
+    ViewData["Title"] = "InvestList";
+}
+
+<h1>會員投資帳號列表</h1>
+@using (Html.BeginForm())
+{
+    @:關鍵字 @Html.TextBox("txtKeyword")
+    <input type="submit" value="查詢" />
+}
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FInvestAccountId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FMemberId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FBrokerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FInvestAccount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FInvestPass)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FInvestAccountId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FMemberId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FBrokerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FInvestAccount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FInvestPass)
+            </td>
+            <td>
+                    @Html.ActionLink("修改", "Edit", "InvestmentAccount", new { id = item.FInvestAccountId }) |
+                    @Html.ActionLink("刪除", "Delete", new { id = item.FInvestAccountId }, new { onclick = "return confirm('確定要刪除嗎?')" })
+            </td>
+        </tr>
+}F
+    </tbody>
+</table>
