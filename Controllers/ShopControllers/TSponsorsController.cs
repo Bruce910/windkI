@@ -47,22 +47,24 @@ namespace Final10._14.Controllers.ShopControllers
         {
             return View();
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create([Bind("FSponsorName,FSponsorCategoryId,FAddress,FPhone,FCapital,FIntroduction,FStatus")] TSponsor sponsor)
+        {
+            if (ModelState.IsValid)
+            {
+                // 不設置 Id 屬性，讓資料庫自動生成
+                _context.TSponsors.Add(sponsor);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(sponsor);
+        }
 
         // POST: TSponsors/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FSponsorId,FSponsorName,FSponsorCategoryId,FAddress,FPhone,FCapital,FIntroduction,FStatus")] TSponsor tSponsor)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(tSponsor);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(tSponsor);
-        }
+      
 
         // GET: TSponsors/Edit/5
         public async Task<IActionResult> Edit(int? id)
