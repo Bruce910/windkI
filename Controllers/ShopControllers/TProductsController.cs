@@ -11,6 +11,7 @@ namespace Final10._14.Controllers.ShopControllers
 {
     public class TProductsController : Controller
     {
+
         private readonly WealthierAndKinderContext _context;
 
         public TProductsController(WealthierAndKinderContext context)
@@ -18,12 +19,22 @@ namespace Final10._14.Controllers.ShopControllers
             _context = context;
         }
 
-        // GET: TProducts
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.TProducts.ToListAsync());
-        }
 
+        // GET: TProducts
+        public async Task<IActionResult> Index(string SearchName)
+        {
+            var products = from p in _context.TProducts
+                           select p;
+
+            if (!string.IsNullOrEmpty(SearchName))
+            {
+                products = products.Where(p => p.FProductName.Contains(SearchName));
+            }
+
+            ViewData["SearchName"] = SearchName;
+
+            return View(await products.ToListAsync());
+        }
         // GET: TProducts/Details/5
         public async Task<IActionResult> Details(int? id)
         {

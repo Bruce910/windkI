@@ -4,60 +4,74 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>新增</h1>
 
-<h4>TSponsor</h4>
+<h4>贊助商</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
-                <label asp-for="FSponsorName" class="control-label"></label>
+                <label asp-for="FSponsorName" class="control-label">贊助商名稱</label>
                 <input asp-for="FSponsorName" class="form-control" />
                 <span asp-validation-for="FSponsorName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FSponsorCategoryId" class="control-label"></label>
-                <input asp-for="FSponsorCategoryId" class="form-control" />
+                <label asp-for="FSponsorCategoryId" class="control-label">贊助商類別</label>
+                <select asp-for="FSponsorId" class="form-control">
+                    <option value="1">
+                        環保議題
+                    </option>
+                    <option value="2">動物救助</option>
+                    <option value="3">弱勢關懷</option>
+                    <option value="4">宗教迫害</option>
+                    <option value="5">人權守護</option>
+                </select>
                 <span asp-validation-for="FSponsorCategoryId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FAddress" class="control-label"></label>
+                <label asp-for="FAddress" class="control-label">地址</label>
                 <input asp-for="FAddress" class="form-control" />
                 <span asp-validation-for="FAddress" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FPhone" class="control-label"></label>
+                <label asp-for="FPhone" class="control-label">電話</label>
                 <input asp-for="FPhone" class="form-control" />
                 <span asp-validation-for="FPhone" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FCapital" class="control-label"></label>
+                <label asp-for="FCapital" class="control-label">資本額</label>
                 <input asp-for="FCapital" class="form-control" />
                 <span asp-validation-for="FCapital" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FIntroduction" class="control-label"></label>
+                <label asp-for="FIntroduction" class="control-label">介紹</label>
                 <input asp-for="FIntroduction" class="form-control" />
                 <span asp-validation-for="FIntroduction" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FStatus" class="control-label"></label>
-                <input asp-for="FStatus" class="form-control" />
+                <label asp-for="FStatus" class="control-label">合作狀態</label>
+                <select asp-for="FStatus" class="form-control">
+                    <option value="1">合作中</option>
+                    <option value="2">未合作</option>
+                </select>
                 <span asp-validation-for="FStatus" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="送出新增" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">回列表</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
