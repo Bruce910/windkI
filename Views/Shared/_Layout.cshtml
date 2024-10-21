@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="~/Final10._14.styles.css" asp-append-version="true" />
     <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="~/css/sb-admin-2.min.css" rel="stylesheet">
-    
+    @await RenderSectionAsync("Styles", required: false)
    
 </head>
 <body>
@@ -21,7 +21,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="~/Member/Index">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="~/Login/Login">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -89,7 +89,26 @@
             <div class="sidebar-heading">
                 互助系統
             </div>
-
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                   aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>會員管理</span>
+                </a>
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">細項</h6>
+                        <a class="collapse-item" href="~/Member/Index">員工清單</a>
+                        <a class="collapse-item" href="register.html">Register</a>
+                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">Other Pages:</h6>
+                        <a class="collapse-item" href="404.html">404 Page</a>
+                        <a class="collapse-item" href="blank.html">Blank Page</a>
+                    </div>
+                </div>
+            </li>
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"

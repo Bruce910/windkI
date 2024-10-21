@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\Match-Models\**" />
+    <Content Remove="Models\Match-Models\**" />
+    <EmbeddedResource Remove="Models\Match-Models\**" />
+    <None Remove="Models\Match-Models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="efpt.config.json.user" />
     <None Include="wwwroot\js\site.js" />
   </ItemGroup>
@@ -29,8 +36,9 @@
 
   <ItemGroup>
     <Folder Include="Controllers\Match-Controllers\" />
-    <Folder Include="Models\Match-Models\" />
     <Folder Include="TModels\MemberModels\DTO\" />
+    <Folder Include="TModels\MemberModels\CInterfaces\" />
+    <Folder Include="TModels\MemberModels\CAbstracts\" />
     <Folder Include="Views\Match\" />
   </ItemGroup>
 

@@ -3,13 +3,125 @@
 @{
     ViewData["Title"] = "Index";
 }
+@section Styles
+{
+    <style>
+        .table-container {
+            max-height: 400px; /* 設置容器的最大高度 */
+            overflow-x: auto; /* 滾動條 */
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
 
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .focused {
+            background-color: #cce5ff; /* 聚焦時的背景顏色 */
+            font-weight: bold; /* 聚焦時的字體加粗 */
+        }
+
+        .clickable:hover {
+            cursor: pointer;
+            color:aqua;
+        }
+
+        .form-popup {
+            overflow-y: auto; /* 滾動條 */
+            display: none; /* 初始隱藏，可用 JavaScript 控制顯示 */
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex; /* 使用 Flexbox */
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            width: 90%; /* 設置為90%以適應小螢幕 */
+            max-width: 400px; /* 最大寬度 */
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: border 0.3s;
+        }
+
+            input[type="text"]:focus,
+            input[type="password"]:focus {
+                border-color: #4CAF50;
+                outline: none;
+            }
+
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+            .btn:hover {
+                background-color: #45a049;
+            }
+
+        .cancel {
+            background-color: #f44336;
+        }
+
+            .cancel:hover {
+                background-color: #e53935;
+            }
+    </style>
+}
+@await Html.PartialAsync("_createPartial")
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Create</a>
 </p>
-<table class="table">
+<p>
+    <a class="clickable" id="try" onclick="openForm()">ajaxCreate</a>
+</p>
+<div class="table-container">
+<table id="memberTable" class="Table">
     <thead>
         <tr>
             <th>
@@ -104,10 +216,58 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.FEmployeeSid">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.FEmployeeSid">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.FEmployeeSid">Delete</a>
+                <a asp-action="Details" asp-route-id="@item.FEmployeeSid" >Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.FEmployeeSid" onclick="return confirm('確定要刪除嗎?')">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+</div>
+@section Scripts
+{
+        <script>
+        function openForm() {
+            document.getElementById("myForm").style.display = "flex";
+        }
+
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+        }
+        const table = document.getElementById('memberTable');
+
+        table.addEventListener('click', function (event) {
+            const target = event.target;
+            const row = target.closest('tr');
+
+            if (row) {
+                // 清除其他行的聚焦樣式
+                const rows = table.querySelectorAll('tr');
+                rows.forEach(r => r.classList.remove('focused'));
+
+                // 為當前行添加聚焦樣式
+                row.classList.add('focused');
+
+                const rowIndex = row.rowIndex; // 獲取行的索引
+                alert('行索引: ' + rowIndex);
+            }
+        });
+        const tryLink = document.getElementById('try');
+
+        tryLink.addEventListener('click', function (event) {
+            event.preventDefault(); // 防止默認的跳轉行為
+            
+        });
+
+        function updateOrders() {
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("Orders", "Customers")/" + CustomerId.value,
+            }).done(function (result) {
+                $("#Orders").html(result);
+            }).fail(function (e) {
+                alert(e.statusText);
+            });
+        }
+    </script>
+}

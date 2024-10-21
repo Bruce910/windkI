@@ -1,25 +1,26 @@
-﻿using Final10._14.Models;
+﻿using Castle.Core.Resource;
+using Final10._14.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using static System.Net.WebRequestMethods;
+using System.Security;
 
 namespace Final10._14.Controllers.MemberControllers
 {
-    public class MemberController : Controller
+    public class MemberController(WealthierAndKinderContext context) : Controller
     {
-        private readonly WealthierAndKinderContext _context;
-
-        public MemberController(WealthierAndKinderContext context)
-        {
-            _context = context;
-        }
         // GET: MemberController
         public ActionResult Index()
         {
-            IEnumerable<TEmployeeMember> datas = _context.TEmployeeMembers;
+            IEnumerable<TEmployeeMember> datas = context.TEmployeeMembers;
 
             return View(datas);
         }
-
+        public async Task<IActionResult> Orders()
+        {
+            return PartialView("_OrdersPartial");
+        }
         // GET: MemberController/Details/5
         public ActionResult Details(int id)
         {
@@ -35,8 +36,11 @@ namespace Final10._14.Controllers.MemberControllers
         // POST: MemberController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(TEmployeeMember newEmp)
         {
+            context.TEmployeeMembers.Add(newEmp);
+            context.SaveChanges();
+            return RedirectToAction(nameof(Index));
             try
             {
                 return RedirectToAction(nameof(Index));
@@ -50,28 +54,51 @@ namespace Final10._14.Controllers.MemberControllers
         // GET: MemberController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            TEmployeeMember ?r = context.TEmployeeMembers.FirstOrDefault(x => x.FEmployeeSid == id);
+            if (r == null)
+                return RedirectToAction("Index");
+            return View(r);
         }
 
         // POST: MemberController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, TEmployeeMember newEmp)
         {
-            try
+            TEmployeeMember customerDb = context.TEmployeeMembers.FirstOrDefault(x => x.FEmployeeSid == id);
+            if (customerDb != null)
             {
-                return RedirectToAction(nameof(Index));
+                customerDb.FMemberId = newEmp.FMemberId;
+                customerDb.FAccount = newEmp.FAccount;
+                customerDb.FPassword = newEmp.FPassword;
+                customerDb.FUserName = newEmp.FUserName;
+                customerDb.FFirstName = newEmp.FFirstName;
+                customerDb.FLastName = newEmp.FLastName;
+                customerDb.FEmail = newEmp.FEmail;
+                customerDb.FIdentification = newEmp.FIdentification;
+                customerDb.FSex = newEmp.FSex;
+                customerDb.FStatus = newEmp.FStatus;
+                customerDb.FPermissions = newEmp.FPermissions;
+                customerDb.FIp = newEmp.FIp;
+                customerDb.FMemberImagePath = newEmp.FMemberImagePath;
+                context.SaveChanges();
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
 
         // GET: MemberController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            if (id != null)
+            {
+                TEmployeeMember r = context.TEmployeeMembers.FirstOrDefault(x => x.FEmployeeSid == id);
+                if (r != null)
+                {
+                    context.TEmployeeMembers.Remove(r);
+                    context.SaveChanges();
+                }
+            }
+            return RedirectToAction("List");
         }
 
         // POST: MemberController/Delete/5

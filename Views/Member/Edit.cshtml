@@ -1,0 +1,93 @@
+﻿@model Final10._14.Models.TEmployeeMember
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>TEmployeeMember</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FMemberId" class="control-label"></label>
+                <input asp-for="FMemberId" class="form-control" />
+                <span asp-validation-for="FMemberId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FAccount" class="control-label"></label>
+                <input asp-for="FAccount" class="form-control" />
+                <span asp-validation-for="FAccount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FPassword" class="control-label"></label>
+                <input asp-for="FPassword" class="form-control" />
+                <span asp-validation-for="FPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FUserName" class="control-label"></label>
+                <input asp-for="FUserName" class="form-control" />
+                <span asp-validation-for="FUserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FFirstName" class="control-label"></label>
+                <input asp-for="FFirstName" class="form-control" />
+                <span asp-validation-for="FFirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FLastName" class="control-label"></label>
+                <input asp-for="FLastName" class="form-control" />
+                <span asp-validation-for="FLastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FEmail" class="control-label"></label>
+                <input asp-for="FEmail" class="form-control" />
+                <span asp-validation-for="FEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FIdentification" class="control-label"></label>
+                <input asp-for="FIdentification" class="form-control" />
+                <span asp-validation-for="FIdentification" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FSex" class="control-label"></label>
+                <input asp-for="FSex" class="form-control" />
+                <span asp-validation-for="FSex" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FStatus" class="control-label"></label>
+                <input asp-for="FStatus" class="form-control" />
+                <span asp-validation-for="FStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FPermissions" class="control-label"></label>
+                <input asp-for="FPermissions" class="form-control" />
+                <span asp-validation-for="FPermissions" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FIp" class="control-label"></label>
+                <input asp-for="FIp" class="form-control" />
+                <span asp-validation-for="FIp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FMemberImagePath" class="control-label"></label>
+                <input asp-for="FMemberImagePath" class="form-control" />
+                <span asp-validation-for="FMemberImagePath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

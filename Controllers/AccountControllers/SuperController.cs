@@ -14,7 +14,7 @@ namespace Final10._14.Controllers.AccountControllers
             {
                 context.Result = new RedirectToRouteResult(new RouteValueDictionary(new
                 {
-                    controller = "Home",
+                    controller = "Login",
                     action = "Login"
                 }));
             }

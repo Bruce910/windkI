@@ -1,0 +1,80 @@
+﻿
+
+<div class="form-popup" id="myForm">
+    <form action="/Member/Create" method="post" class="form-container">
+        <!-- 替換為你的表單處理路徑 -->
+        <div class="form-group">
+            <label for="FMemberId">會員ID</label>
+            <input type="text" id="FMemberId" name="FMemberId" class="form-control" value="MAU111" />
+            <span class="text-danger" id="FMemberIdError"></span>
+        </div>
+        <div class="form-group">
+            <label for="FAccount">帳號</label>
+            <input type="text" id="FAccount" name="FAccount" class="form-control" value="newAccount" />
+            <span class="text-danger" id="FAccountError"></span>
+        </div>
+        <div class="form-group">
+            <label for="FPassword">密碼</label>
+            <input type="password" id="FPassword" name="FPassword" class="form-control" value="pass1234" />
+            <span class="text-danger" id="FPasswordError"></span>
+        </div>
+        <div class="form-group">
+            <label for="FUserName">用戶名</label>
+            <input type="text" id="FUserName" name="FUserName" class="form-control" value="Username123" />
+            <span class="text-danger" id="FUserNameError"></span>
+        </div>
+        <div class="form-group">
+            <label for="FFirstName">名</label>
+            <input type="text" id="FFirstName" name="FFirstName" class="form-control" value="fname" />
+            <span class="text-danger" id="FFirstNameError"></span>
+        </div>
+        <div class="form-group">
+            <label for="FLastName">姓</label>
+            <input type="text" id="FLastName" name="FLastName" class="form-control" value="lname" />
+            <span class="text-danger" id="FLastNameError"></span>
+        </div>
+        <div class="form-group">
+            <label for="FEmail">電子郵件</label>
+            <input type="email" id="FEmail" name="FEmail" class="form-control" value="email@gmail.com" />
+            <span class="text-danger" id="FEmailError"></span>
+        </div>
+        <div class="form-group">
+            <label for="FIdentification">身份證號碼</label>
+            <input type="text" id="FIdentification" name="FIdentification" class="form-control" value="A123456789" />
+            <span class="text-danger" id="FIdentificationError"></span>
+        </div>
+        <div class="form-group">
+            <label for="FSex">性別</label>
+            <input type="text" id="FSex" name="FSex" class="form-control" value="M" />
+            <span class="text-danger" id="FSexError"></span>
+        </div>
+        <div class="form-group">
+            <label for="FStatus">狀態</label>
+            <input type="text" id="FStatus" name="FStatus" class="form-control" value="T" />
+            <span class="text-danger" id="FStatusError"></span>
+        </div>
+        <div class="form-group">
+            <label for="FPermissions">權限</label>
+            <input type="text" id="FPermissions" name="FPermissions" class="form-control" value="1" />
+            <span class="text-danger" id="FPermissionsError"></span>
+        </div>
+        <div class="form-group">
+            <label for="FIp">IP地址</label>
+            <input type="text" id="FIp" name="FIp" class="form-control" value="1996" />
+            <span class="text-danger" id="FIpError"></span>
+        </div>
+        <div class="form-group">
+            <label for="FMemberImagePath">會員圖片路徑</label>
+            <input type="text" id="FMemberImagePath" name="FMemberImagePath" class="form-control" value="Path" />
+            <span class="text-danger" id="FMemberImagePathError"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+        <div class="form-group">
+            <input type="button" value="Cancel" class="btn btn-danger" onclick="closeForm()" />
+        </div>
+    </form>
+
+</div>
+
