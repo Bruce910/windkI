@@ -36,9 +36,9 @@
 
   <ItemGroup>
     <Folder Include="Controllers\Match-Controllers\" />
+    <Folder Include="TModels\MemberModels\CAbstracts\NewFolder\" />
     <Folder Include="TModels\MemberModels\DTO\" />
     <Folder Include="TModels\MemberModels\CInterfaces\" />
-    <Folder Include="TModels\MemberModels\CAbstracts\" />
     <Folder Include="Views\Match\" />
   </ItemGroup>
 
